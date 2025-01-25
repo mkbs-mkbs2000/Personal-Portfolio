@@ -1,0 +1,165 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Magical Taste of China",
+        "Cuisine": "Chinese",
+        "Frequency": 4,
+        "CAD Spent": "101.20"
+      },
+      "geometry": {
+        "coordinates": [
+          -79.39692798162706,
+          43.65330925779389
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Popeyes Louisiana Kitchen",
+        "Cuisine": "Fast Food",
+        "Frequency": 1,
+        "CAD Spent": 48.79
+      },
+      "geometry": {
+        "coordinates": [
+          -79.3996232712113,
+          43.657641500853714
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Cuisine": "Indian",
+        "Name": "Zabardast Hyderabadi Biryani",
+        "Frequency": 3,
+        "CAD Spent": 63.77
+      },
+      "geometry": {
+        "coordinates": [
+          -79.40947057823168,
+          43.6654034679911
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Habibz Corner",
+        "Cuisine": "Middle Eastern",
+        "Frequency": 2,
+        "CAD Spent": 48.68
+      },
+      "geometry": {
+        "coordinates": [
+          -79.40376547440468,
+          43.64736353863776
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Indian Biriyani House",
+        "Cuisine": "Indian",
+        "Frequency": 5,
+        "CAD Spent": 107.53
+      },
+      "geometry": {
+        "coordinates": [
+          -79.38649999710647,
+          43.65502991168947
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Salad King",
+        "Cuisine": "Thai",
+        "Frequency": 1,
+        "CAD Spent": 31.17
+      },
+      "geometry": {
+        "coordinates": [
+          -79.3899851286493,
+          43.650414171220035
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "ChickQueen",
+        "Cuisine": "Fast Food",
+        "Frequency": 1,
+        "CAD Spent": 22.93
+      },
+      "geometry": {
+        "coordinates": [
+          -79.38870305426822,
+          43.65027990551829
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Scotty Bons Caribbean Grill",
+        "Cuisine": "Caribbean",
+        "Frequency": 1,
+        "CAD Spent": "23.10"
+      },
+      "geometry": {
+        "coordinates": [
+          -79.40774664585767,
+          43.6659704520242
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Cuisine": "Thai",
+        "Name": "ThaiRoomGrand",
+        "Frequency": 1,
+        "CAD Spent": 21.34
+      },
+      "geometry": {
+        "coordinates": [
+          -79.40770270744746,
+          43.704907540909744
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "12 Spices",
+        "Cuisine": "Indian",
+        "Frequency": 3,
+        "CAD Spent": 68.54
+      },
+      "geometry": {
+        "coordinates": [
+          -79.38047493516581,
+          43.665913287928475
+        ],
+        "type": "Point"
+      }
+    }
+  ]
+}
