@@ -22,7 +22,7 @@
       "properties": {
         "Name": "Popeyes Louisiana Kitchen",
         "Cuisine": "Fast Food",
-        "Frequency": 1,
+        "Frequency": 2,
         "CAD Spent": 48.79
       },
       "geometry": {
