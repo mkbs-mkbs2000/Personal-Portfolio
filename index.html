@@ -87,22 +87,22 @@
         </p>
     </div>
 
-    <!--A separate div class tag to have a button to show a visualisation of the places that I have ordered UberEats from-->
-    <!--Instead of using the standard primary button, I want to use the block button instead-->
-    <!--Code is adapted from this website which guides me on how to reveal an image upon clicking a button https://www.geeksforgeeks.org/how-to-show-images-on-click-using-html/-->
-    <div class="d-grid gap-2 col-8 mx-auto mb-4">
-        <img id="map" src="data/Map.png" class="img-fluid" alt="Map of Restaurants where I ordered UberEats in November 2024">
-        <button class="btn btn-primary" type="button" id="mapclick" onclick="show()">Click here to see a map of where I have ordered UberEats in November 2024!</button>
-    </div>
-
-    <!--This is a separate div class tag to centralise an interactive voting section-->
-    <!--Instead of using the standard primary buttons, I want to add a green and red color button scheme for Yes or No-->
+    <!--This is a separate div class tag to centralise the interactive features on the main page-->
     <div class="container text-center mb-4">
+
+        <!--Instead of using the standard primary button, I want to use the block button instead-->
+        <!--Code is adapted from this website which guides me on how to reveal an image upon clicking a button https://www.geeksforgeeks.org/how-to-show-images-on-click-using-html/-->
+        <div class="d-grid gap-2 col-8 mx-auto mb-4">
+            <img id="map" src="data/Map.png" class="img-fluid" alt="Map of Restaurants where I ordered UberEats in November 2024">
+            <button class="btn btn-primary" type="button" id="mapclick" onclick="show()">Click here to see a map of where I have ordered UberEats in November 2024!</button>
+        </div>
+
         <p>
             Have you eaten at, or ordered from, any of these places?
         </p>
 
         <div id="yesorno">
+            <!--Instead of using the standard primary buttons, I want to add a green and red color button scheme for Yes or No-->
             <!--The specific buttons will trigger different responses, as outlined in the JS script-->
             <button type="button" class="btn btn-success" onclick="yes()">Yes</button>    
             <button type="button" class="btn btn-danger" onclick="no()">No</button>
