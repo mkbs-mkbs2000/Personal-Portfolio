@@ -96,39 +96,47 @@
     </div>
 
     <!--This is a separate div class tag to centralise an interactive voting section-->
-    <!--Instead of using the standard primary buttons, I want to add a green and red color button-->
+    <!--Instead of using the standard primary buttons, I want to add a green and red color button scheme for Yes or No-->
     <div class="container text-center mb-4">
         <p>
             Have you eaten at, or ordered from, any of these places?
         </p>
-        <div class="row">
-            <div class="col">
-                <button type="button" class="btn btn-success" id="btn-yes">Yes</button>
-            </div>
-            <div class="col">    
-                <button type="button" class="btn btn-danger" id="btn-no">No</button>
-            </div>
+
+        <div id="yesorno">
+            <!--The specific buttons will trigger different responses, as outlined in the JS script-->
+            <button type="button" class="btn btn-success" onclick="yes()">Yes</button>    
+            <button type="button" class="btn btn-danger" onclick="no()">No</button>
         </div>
 
-        <div class="row">
-            <div class="col">
-                <p><!-- Display count for yes votes -->
-                    <span id="count-yes">0</span> have eaten at these places!
-                </p>
-            </div>
-            <div class="col">
-                <p><!-- Display count for no votes -->
-                    <span id="count-no">0</span> have not eaten at these places!
-                </p>
-            </div>
+        <div id="yesmessage">
+            <!--What would appear if the user clicks "Yes"-->
+            <p>Wow, we share very similar tastes! Would you like to go out for dinner with me at any of these places?</p>
         </div>
+
+        <div id="nomessage">
+            <!--What would appear if the user clicks "No"-->
+            <p>
+                Maybe you should check out the menu of the following places, and then we can go out for dinner together sometime?<br>
+                <a target="_blank" href="https://magicaltasteofchina.com/dt476"><p>Magical Taste of China</p></a>
+                <a target="_blank" href="https://www.popeyes.com/menu"><p>Popeyes Louisiana Kitchen</p></a>
+                <a target="_blank" href="https://www.zabardast.ca/menu"><p>Zabardast Hyderabadi Biryani</p></a>
+                <a target="_blank" href="https://habibzcorner.com/menu.html"><p>Habibz Corner</p></a>
+                <a target="_blank" href="https://biriyanihouse.ca/#menu"><p>Indian Biriyani House</p></a>
+                <a target="_blank" href="https://saladking.com/#menu-block-3"><p>Salad King</p></a>
+                <a target="_blank" href="https://www.chickqueen.ca/our-menu/"><p>ChickQueen</p></a>
+                <a target="_blank" href="https://www.scottybonsgrill.com/menu"><p>Scotty Bons Caribbean Grill</p></a>
+                <a target="_blank" href="https://thairoomgrand.com/menu"><p>ThaiRoomGrand</p></a>
+                <a target="_blank" href="https://www.ubereats.com/ca/store/12-spices/cVBNG4iNRqaIQ1PhG_PmWw?srsltid=AfmBOorOyjUz09-WdbvzPggv9_JCAMI5asTB9QxYeihZpjwUDnleGv4t"><p>12 Spices</p></a>
+            </p>
+        </div>
+
     </div>
     
     <div class="container">
         <p>
             Notwithstanding that, I also intend to make this as a humble repository of all the works that I have done in the past related to human geography, mapping and GIS.
             They are categorised into two:<br>
-            <ul class="list-styled mb-5">
+            <ul class="mb-5">
                 <!--The paragraph tag is nested in this list and the following list because I want the font size style set in the css to remain consistent-->
                 <li><p><strong>Past Works:</strong> Major works that are for course final assignments or where I personally consider to have made a major contribution (such as data cleaning)</p></li>
                 <li><p><strong>Other Maps and Visualisations Created:</strong> I only made one or a few visualisations, with the major work being done by others</p></li>
@@ -137,7 +145,7 @@
 
         <p>
             In the future (mid 2025), I hope to be able to push two pet projects of mine: <br>
-            <ul class="list-styled mb-5">
+            <ul class="mb-5">
                 <li><p>An analysis of improvements to Singapore's public bus system</p></li>
                 <li><p>A page mapping out what I have learnt thus far in Arabic, Russian and Korean 
                     (Not related to mapping or GIS whatsoever, I just want to consolidate what I have learnt across all three languages)</p></li>

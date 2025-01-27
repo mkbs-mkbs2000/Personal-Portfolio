@@ -11,7 +11,7 @@ p {
     font-size: 15px;
 }
 
-/* This is to set the map image to not be shown at the start, until the button is clicked */
-#map {
+/* This is to set the map image and Yes/No messages to not be shown at the start, until the relevant buttons are clicked */
+#map, #yesmessage, #nomessage {
     display: none;
 }
