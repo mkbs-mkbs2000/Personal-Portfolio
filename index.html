@@ -101,34 +101,30 @@
             Have you eaten at, or ordered from, any of these places?
         </p>
 
-        <div id="yesorno">
-            <!--Instead of using the standard primary buttons, I want to add a green and red color button scheme for Yes or No-->
+        <div class="btn-group" role="group" id="yesorno">
+            <!--Instead of using the standard primary buttons, I want to add a green and red color button group for Yes or No-->
             <!--The specific buttons will trigger different responses, as outlined in the JS script-->
             <button type="button" class="btn btn-success" onclick="yes()">Yes</button>    
             <button type="button" class="btn btn-danger" onclick="no()">No</button>
         </div>
 
-        <div id="yesmessage">
-            <!--What would appear if the user clicks "Yes"-->
-            <p>Wow, we share very similar tastes! Would you like to go out for dinner with me at any of these places?</p>
-        </div>
+        <!--What would appear if the user clicks "Yes"-->
+        <p id="yesmessage">Wow, we share very similar tastes! Would you like to go out for dinner with me at any of these places?</p>
 
-        <div id="nomessage">
-            <!--What would appear if the user clicks "No"-->
-            <p>
-                Maybe you should check out the menu of the following places, and then we can go out for dinner together sometime?<br>
-                <a target="_blank" href="https://magicaltasteofchina.com/dt476"><p>Magical Taste of China</p></a>
-                <a target="_blank" href="https://www.popeyes.com/menu"><p>Popeyes Louisiana Kitchen</p></a>
-                <a target="_blank" href="https://www.zabardast.ca/menu"><p>Zabardast Hyderabadi Biryani</p></a>
-                <a target="_blank" href="https://habibzcorner.com/menu.html"><p>Habibz Corner</p></a>
-                <a target="_blank" href="https://biriyanihouse.ca/#menu"><p>Indian Biriyani House</p></a>
-                <a target="_blank" href="https://saladking.com/#menu-block-3"><p>Salad King</p></a>
-                <a target="_blank" href="https://www.chickqueen.ca/our-menu/"><p>ChickQueen</p></a>
-                <a target="_blank" href="https://www.scottybonsgrill.com/menu"><p>Scotty Bons Caribbean Grill</p></a>
-                <a target="_blank" href="https://thairoomgrand.com/menu"><p>ThaiRoomGrand</p></a>
-                <a target="_blank" href="https://www.ubereats.com/ca/store/12-spices/cVBNG4iNRqaIQ1PhG_PmWw?srsltid=AfmBOorOyjUz09-WdbvzPggv9_JCAMI5asTB9QxYeihZpjwUDnleGv4t"><p>12 Spices</p></a>
-            </p>
-        </div>
+        <!--What would appear if the user clicks "No"-->
+        <p id="nomessage">
+            Maybe you should check out the menu of the following places, and then we can go out for dinner together sometime?<br><br>
+            <a target="_blank" href="https://magicaltasteofchina.com/dt476">Magical Taste of China</a><br>
+            <a target="_blank" href="https://www.popeyes.com/menu">Popeyes Louisiana Kitchen</a><br>
+            <a target="_blank" href="https://www.zabardast.ca/menu">Zabardast Hyderabadi Biryani</a><br>
+            <a target="_blank" href="https://habibzcorner.com/menu.html">Habibz Corner</a><br>
+            <a target="_blank" href="https://biriyanihouse.ca/#menu">Indian Biriyani House</a><br>
+            <a target="_blank" href="https://saladking.com/#menu-block-3">Salad King</a><br>
+            <a target="_blank" href="https://www.chickqueen.ca/our-menu/">ChickQueen</a><br>
+            <a target="_blank" href="https://www.scottybonsgrill.com/menu">Scotty Bons Caribbean Grill</a><br>
+            <a target="_blank" href="https://thairoomgrand.com/menu">ThaiRoomGrand</a><br>
+            <a target="_blank" href="https://www.ubereats.com/ca/store/12-spices/cVBNG4iNRqaIQ1PhG_PmWw?srsltid=AfmBOorOyjUz09-WdbvzPggv9_JCAMI5asTB9QxYeihZpjwUDnleGv4t">12 Spices</a>
+        </p>
 
     </div>
     
