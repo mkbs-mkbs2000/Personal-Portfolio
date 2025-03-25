@@ -1,12 +1,6 @@
 /* I do not like the standard font for Bootstrap. I have been using EB Garamond and would like to use it. 
 StackOverflow suggests importing the API as such in order to effect the change */
 
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
-
-body {
-    font-family: 'EB Garamond', serif;
-}
-
 p {
     font-size: 15px;
 }
