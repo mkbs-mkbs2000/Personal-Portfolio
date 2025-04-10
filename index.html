@@ -11,52 +11,73 @@
 <!--I wanted a light yellow background for the whole page-->
 <body class="bg-warning-subtle">
 
-    <!--This is the navigation bar as adapted from Bootstrap, with adaptations made to text color and style on navbar-->
-    <!--I also wanted a light red/pink background for navbar-->
-    <!--In the first line of navbar code, I added the sticky top feature so that navbar follows as one scrolls down-->
-        <!--this is so that as they read the text about how I catalogue my mapping/GIS works, they can easily access it-->
     <nav class="navbar sticky-top navbar-expand-lg bg-danger-subtle">
-        <!--Removed the fluidity of the container so that the navbar is not flushed to the left side of screen when on large screens-->
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" target="_blank" href="index.html"><strong>MKBS</strong></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand d-flex align-items-center" target="_blank"
+                href="index.html"><strong>MKBS</strong></a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <!--This is the nav dropdown for past works-->
-                    <!--All hyperlinks, be it in the navbar or later below have target="_blank" so as to open up a new page-->
-                    <!--Items are separated by year and ordered based on date of publication within the year-->
-                    <!--Some items in the dropdown have the argument 'text-wrap' so as to wrap the text when website is viewed on smaller screens-->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <strong><u>Past Works</u></strong>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-header"><strong>2023</strong></a></li>
-                            <li><a class="dropdown-item" target="_blank" href="data\URB335 White Paper.pdf"><u>URB335</u> - Addressing Food Insecurity in Toronto</a></li>
-                            <li><a class="dropdown-item" target="_blank" href="https://storymaps.arcgis.com/stories/cae15621d95243049c646911f33d1e0d"><u>GGR376</u> - How Blue is Toronto?</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-header"><strong>2024</strong></a></li>
-                            <li><a class="dropdown-item" target="_blank" href="https://schoolofcities.github.io/gentle-density/adu-development-in-canadian-cities"><u>UofT School of Cities</u> - Gentle Density Across Canada</a></li>
-                            <li><a class="dropdown-item text-wrap" target="_blank" href="data\GGR375 Accessibility with Ontario Line in Moss Park.html"><u>GGR375</u> - Evaluating Transit Accessibility with Ontario Line</a></li>
-                            <li><a class="dropdown-item" target="_blank" href="https://tjusticeinjakut.wordpress.com/"><u>GGR377</u> - Exploring Transport Justice in North Jakarta</a></li>
-                            <li><hr class='dropdown-divider'></li>
-                            <li><a class='dropdown-header'><strong>2025</strong></a></li>
-                            <li><a class='dropdown-item' target='_blank' href='designportfolio.html'><u>MUCP</u> - Individual Design Portfolio</a></li>
-                            <li><a class='dropdown-item' target='_blank' href='https://mkbs-mkbs2000.github.io/Collisions-in-Toronto/'><u>GGR472</u> - Mapping Pedestrian/Cyclist Accidents in Toronto</a></li>
+                            <li><a class="dropdown-item"><strong>2023</strong></a></li>
+                            <li><a class="dropdown-item" target="_blank"
+                                    href="data\URB335 White Paper.pdf"><u>URB335</u> - Addressing Food Insecurity in
+                                    Toronto</a></li>
+                            <li><a class="dropdown-item" target="_blank"
+                                    href="https://storymaps.arcgis.com/stories/cae15621d95243049c646911f33d1e0d"><u>GGR376</u>
+                                    - How Blue is Toronto?</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item"><strong>2024</strong></a></li>
+                            <li><a class="dropdown-item text-wrap" target="_blank"
+                                    href="https://schoolofcities.github.io/gentle-density/adu-development-in-canadian-cities"><u>UofT
+                                        School of Cities</u> - Gentle Density Across Canada</a></li>
+                            <li><a class="dropdown-item text-wrap" target="_blank"
+                                    href="data\GGR375 Accessibility with Ontario Line in Moss Park.html"><u>GGR375</u> -
+                                    Evaluating Transit Accessibility with Ontario Line</a></li>
+                            <li><a class="dropdown-item text-wrap" target="_blank"
+                                    href="https://tjusticeinjakut.wordpress.com/"><u>GGR377</u> - Exploring Transport
+                                    Justice in North Jakarta</a></li>
+                            <li>
+                                <hr class='dropdown-divider'>
+                            </li>
+                            <li><a class='dropdown-item'><strong>2025</strong></a></li>
+                            <li><a class='dropdown-item' target='_blank' href='designportfolio.html'><u>MUCP</u> -
+                                    Individual Design Portfolio</a></li>
+                            <li><a class='dropdown-item' target='_blank'
+                                    href='https://mkbs-mkbs2000.github.io/Collisions-in-Toronto/'><u>GGR472</u> -
+                                    Mapping Accidents in Toronto</a></li>
                         </ul>
                     </li>
-                    <!--I also want to showcase maps that I have created, featured in articles that I do not directly author-->
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <strong><u>Other Maps and Visualisations Created</u></strong>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item"><strong>2024</strong></a></li>
-                            <li><a class="dropdown-item" target="_blank" href="https://www.maju.sg/post/our-secret-is-no-cigarette-singapore-s-anti-smoking-policies"><u>MAJU</u> - Singapore's Anti-Smoking Policies</a></li>
-                            <li><a class="dropdown-item" target="_blank" href="https://www.maju.sg/post/a-shared-responsibility-road-safety-in-singapore"><u>MAJU</u> - Road Safety in Singapore</a></li>
-                            <li><a class="dropdown-item text-wrap" target="_blank" href="https://schoolofcities.utoronto.ca/whats-the-poop-on-dogs-and-cities/"><u>UofT School of Cities</u> - Dog Park Accessibility in Toronto</a></li>
+                            <li><a class="dropdown-item" target="_blank"
+                                    href="https://www.maju.sg/post/our-secret-is-no-cigarette-singapore-s-anti-smoking-policies"><u>MAJU</u>
+                                    - Singapore's Anti-Smoking Policies</a></li>
+                            <li><a class="dropdown-item" target="_blank"
+                                    href="https://www.maju.sg/post/a-shared-responsibility-road-safety-in-singapore"><u>MAJU</u>
+                                    - Road Safety in Singapore</a></li>
+                            <li><a class="dropdown-item text-wrap" target="_blank"
+                                    href="https://schoolofcities.utoronto.ca/whats-the-poop-on-dogs-and-cities/"><u>UofT
+                                        School of Cities</u> - Dog Park Accessibility in Toronto</a></li>
                         </ul>
                     </li>
                 </ul>
