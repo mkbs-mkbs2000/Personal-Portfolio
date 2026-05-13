@@ -6,6 +6,58 @@ p {
 }
 
 /* This is to set the map image and Yes/No messages to not be shown at the start, until the relevant buttons are clicked */
-#map, #yesmessage, #nomessage {
+#map,
+#yesmessage,
+#nomessage {
     display: none;
+}
+
+.year-heading {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #6c757d;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+.work-card {
+    background-color: #fff8e7;
+    border: 1px solid #f5c6a0;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+    transition: box-shadow 0.15s ease;
+}
+
+.work-card:hover {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.work-card .label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #c0392b;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.2rem;
+}
+
+.work-card .title a {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #212529;
+    text-decoration: none;
+}
+
+.work-card .title a:hover {
+    text-decoration: underline;
+    color: #c0392b;
+}
+
+.work-card .description {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 0.3rem;
+    margin-bottom: 0;
 }
