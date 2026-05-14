@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MSc Urban Spatial Science Dissertation Diary</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body class="bg-warning-subtle">
+
+        <nav class="navbar sticky-top navbar-expand-lg bg-danger-subtle">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html"><strong>MKBS</strong></a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="past_projects.html"><strong><u>Past Projects</u></strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="secondary_contributions.html"><strong><u>Secondary Contributions</u></strong></a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="dissertation_diary.html"><strong><u>Dissertation Diary</u></strong></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container text-center mt-4 mb-4">
+            <h1>Dissertation Diary</h1>
+        </div>
+
+        <div class="container mt-4 mb-5">
+            <div class="year-heading">Why a public-facing dissertation diary?</div>
+            <p class="description">
+                It is May 14th when I first set up this dissertation diary. On this day, it has been ten days into my MSc dissertation research proper. 
+                So I have had a fair amount of material - background readings and data - that I have collected for my dissertation. It is just that I must acknowledge 
+                that <strong>I DO USE LARGE LANGUAGE MODELS</strong> for this research and this will allow me to disclose how I have been using it in a more 
+                comprehensive manner that I will never be able to do in a formal dissertation report. <br><br>
+                You can click the "Context" tab below to find out more about this dissertation in particular, but it was on May 12th where I asked Claude to guide 
+                me in building a Python script to scrape real-time bus location data from the 
+                <a target="_blank" href="https://www.bus-data.dft.gov.uk/">Bus Open Data Service</a>. Claude returned me 
+                <a target="_blank" href="https://github.com/open-innovations/bods-archive">this curious link</a>. It turned out that there's a non-profit organisation, 
+                Open Innovation, which has already been scraping real-time bus location data from BODS since June 18th, 2025 - so that means I don't have to scrape for 
+                data anymore! All I had to do was just download data from whichever day(s) that I needed and convert them into retrospective bus timetable data! <br><br>
+                On <a target="_blank" href="https://open-innovations.org/blog/">their main page</a>, they have blog posts, through which they share about their various 
+                other open data projects and also about why they embarked on this project to archive real-time bus locations. It was also through the blog that I learnt 
+                that Open Innovations only recently closed down, and that their real-time bus location archive would soon terminate in about two months when their 
+                server finally runs out of memory. In essence, this bus location data fortunately exists just in time for my dissertation. Thus, I thought it would be 
+                fitting to record my dissertation journey in a frank, public-facing manner because I feel indebted to their hard work, upon which I am building. <br><br>
+                I intend to structure my <s>ramblings</s> recording entries into sections - "Context", "Literature", "Data and Methods", "Results" - so that it can also 
+                double up as a resource I can fall back on when I have to start writing the formal report in July (for submission by August 20th). Killing two birds 
+                with one stone, or maybe taking two journeys on one fare &#129315;? <br><br>
+                I hope to be as clear as possible here, but if you have any questions, feel free to message me on LinkedIn!
+            </p>
+
+            <div class="work-card">
+                <div class="title">
+                    <a target="_blank" href="data\URB335 White Paper.pdf">Context</a>
+                </div>
+                <p class="description">What is my dissertation about? Who are involved in this?</p>
+            </div>
+
+            <div class="work-card">
+                <div class="title">
+                    <a target="_blank" href="https://storymaps.arcgis.com/stories/cae15621d95243049c646911f33d1e0d">Literature</a>
+                </div>
+                <p class="description">Essentially this will be a dumping ground of summaries of relevant literature that I can then use for literature review.</p>
+            </div>
+
+            <div class="work-card">
+                <div class="title">
+                    <a target="_blank" href="https://storymaps.arcgis.com/stories/cae15621d95243049c646911f33d1e0d">Data and Methods</a>
+                </div>
+                <p class="description">What data I have found? Why did I choose this data over others? How am I going to manipulate this data? A lot of my ramblings may end up here because I can share more about my back-and-forth with Claude here for transparency.</p>
+            </div> 
+
+            <div class="work-card">
+                <div class="title">
+                    <a>Results</a>
+                </div>
+                <p class="description">This link won't be active until I have something to show, which may not be until mid June...</p>
+            </div>
+
+        </div>
+
+        <script src="script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    </body>
+</html>
