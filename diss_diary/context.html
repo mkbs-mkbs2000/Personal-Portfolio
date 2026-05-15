@@ -44,7 +44,7 @@
 
             <br><br>
 
-            <div class="year-heading">May 14, 2025</div>
+            <div class="year-heading" id="may14context">May 14, 2026</div>
             <p class="description">
                 The dissertation programme for MSc Urban Spatial Science, at least as of the 2025/2026 AY, has an opportunity for candidates to take up partner/staff 
                 projects on top of proposing an original research idea (although everyone was required to think of at least one original idea in case that they 
@@ -59,19 +59,26 @@
 
                 Essentially, this dissertation aims to be an extension of 
                 <a target="_blank" href="https://www.centreforcities.org/publication/integrated-transport-the-size-of-the-prize-for-mayors/">a recently-published work by the CfC</a> 
-                that looks at how several large British cities <strong>outside of London</strong> may stand to benefit if they could improve their local public 
-                transport provision. The metric is based on how many of the cities' working population could have a 'reasonable' journey to their respective city 
-                centres based on the actual time taken by public transport. The baseline condition for a 'reasonable' journey is limited to the following conditions:
+                that looks at how several large British cities <strong>outside of London</strong> may stand to benefit ECONOMICALLY if they could improve their local 
+                public transport provision. The metric is based on how many of the cities' working population could have a 'reasonable' journey to their respective city 
+                centres based on the actual time taken by public transport. The focus on city centres is because they were building on 
+                <a target="_blank" href="https://www.centreforcities.org/publication/at-the-frontier-the-geography-of-the-uks-new-economy/">one of their previous works</a> 
+                (that I will have to do a Lit Review on it, fairly soon!) which found that in the post-COVID environment, the most productive sector (the knowledge 
+                services sector) is strongly concentrated in city centres -> and therefore the link that if more people could get to these places, it means more people 
+                could directly or indirectly partake in this highly productive sector and benefit from it, which in turn benefits the cities' economic health. The 
+                baseline condition for a 'reasonable' journey is limited to the following conditions:
+            </p>
                 
-                <ol>
-                    <li>only one bus/train/tram ride, no interchanging</li>
-                    <li>on services provided for local commuting, not on National Express-style or tourist sightseeing services</li>
-                    <li>one should not wait for more than 15 minutes for a bus OR 20 minutes for a train/tram</li>
-                    <li>one should not walk for more than ten minutes to the bus stop OR 16 minutes to the train station/tram stop</li>
-                    <li>the <strong>PUBLIC TRANSPORT LEG</strong> of the journey should not take more than 30 (or 45) minutes to the city centre <i>(so overall commute time if you include walking is actually 61 minutes at maximum)</i></li>
-                    <li>the end time of the journey is between 0845 and 0915 hrs on a specific midweek day in September 2025</li>
-                </ol>
+            <ol>
+                <li>only one bus/train/tram ride, no interchanging</li>
+                <li>on services provided for local commuting, not on National Express-style or tourist sightseeing services</li>
+                <li>one should not wait for more than 15 minutes for a bus OR 20 minutes for a train/tram</li>
+                <li>one should not walk for more than ten minutes to the bus stop OR 16 minutes to the train station/tram stop</li>
+                <li>the <strong>PUBLIC TRANSPORT LEG</strong> of the journey should not take more than 30 (or 45) minutes to the city centre <i>(so overall commute time if you include walking is actually 61 minutes at maximum)</i></li>
+                <li>the end time of the journey is between 0845 and 0915 hrs on a specific midweek day in September 2025</li>
+            </ol>
 
+            <p class="description">
                 Working backwards, I am inferring that one starts from the city centre in that 30-minute window on that one specific day, <br>
                 -> filter for public transport services that meet Criteria 3, <br>
                 -> use real-time bus location data to find out how far back the buses were 30/45 minutes earlier <i>(no mention in the report of presence of real-time train/tram location data, and not that I know of as of today, so I am assuming that train/tram locations are based purely on scheduled data)</i>, <br>
@@ -80,18 +87,21 @@
                 -> and then find out the working population totals that live within the isochrones. <strong>This is the metric to be reported!</strong> <br><br>
 
                 They compared how this metric, based on the baseline condition, would change if the public transport provision could be improved these three ways <br>
+            </p>
 
-                <ul>
-                    <li><strong>Modal Integration</strong>: What if you allow for JUST ONE interchange (hop on a bus followed by a train/tram)?</li>
-                    <li><strong>Increased Bus Frequencies</strong>: What if you amend Criteria 3 to include for bus services where one has to wait for up to 30 minutes? 
-                        <i>The idea is to consider what happens if you increase the frequency of buses that currently turn up twice or thrice per hour into four times per hour?</i></li>
-                    <li><strong>Reduced Bus Journey Times</strong>: What if, by any reason, the actual BUS journey times could be reduced by 15%? 
-                        <i>Basically amending Criteria 5 such that actual 35-min bus journeys = 30-min and 53-min bus journeys = 45-min. No changes to train/tram journey times.</i></li>
-                </ul>
+            <ul>
+                <li><strong>Modal Integration</strong>: What if you allow for JUST ONE interchange (hop on a bus followed by a train/tram)?</li>
+                <li><strong>Increased Bus Frequencies</strong>: What if you amend Criteria 3 to include for bus services where one has to wait for up to 30 minutes? 
+                    <i>The idea is to consider what happens if you increase the frequency of buses that currently turn up twice or thrice per hour into four times per hour?</i></li>
+                <li><strong>Reduced Bus Journey Times</strong>: What if, by any reason, the actual BUS journey times could be reduced by 15%? 
+                    <i>Basically amending Criteria 5 such that actual 35-min bus journeys => 30-min and actual 53-min bus journeys => 45-min. No changes to train/tram journey times.</i></li>
+            </ul>
 
+            <p class="description">
                 The outcome of this research has also been visualised 
                 <a target="_blank" href="https://www.centreforcities.org/data/integrated-transport-data-tool/">here</a>! <br><br><br>
 
+                
                 <h5>Where I Seek to Contribute to This Research</h5>
                 The CfC research uses <strong>actual bus travel journeys</strong> to generate their findings. This already puts it apart from others in the literature 
                 because most research uses <i>scheduled bus travel journeys</i>. Actual bus travel journeys always take longer than scheduled, but by how much? 
@@ -116,16 +126,17 @@
                 instead of how many more people would now live within a 'reasonable' journey to the city centre. <br><br>
 
                 In short, I have the following four research sub-questions:
-
-                <ol>
-                    <li>How many people ACTUALLY benefited from a direct 30/45 min journey to work at the city centre based on actual bus travel times?</li>
-                    <li>How many people SHOULD HAVE benefited from a direct 30/45 min journey to work at the city centre based on scheduled bus times but don't because actual bus times are slower?</li>
-                    <li>How many people OUGHT to have a direct 30/45 min journey to work at the city centre but can't because scheduled bus times just cannot even afford them the opportunity to begin with?</li>
-                    <li>Using spatial interaction modelling, how will these three numbers change when the three improvements take place?</li>
-                </ol>
-
-                As of today, I have NOT formulated a central research question to connect these four sub-questions...
             </p>
+                
+            <ol>
+                <li>How many people ACTUALLY benefited from a direct 30/45 min journey to work at the city centre based on actual bus travel times?</li>
+                <li>How many people SHOULD HAVE benefited from a direct 30/45 min journey to work at the city centre based on scheduled bus times but don't because actual bus times are slower?</li>
+                <li>How many people OUGHT to have a direct 30/45 min journey to work at the city centre but can't because scheduled bus times just cannot even afford them the opportunity to begin with?</li>
+                <li>Using spatial interaction modelling, how will these three numbers change when the three improvements take place?</li>
+            </ol>
+
+            <p class="description">As of today, I have NOT formulated a central research question to connect these four sub-questions...</p>
+
         </div>
 
         <script src="../script.js"></script>

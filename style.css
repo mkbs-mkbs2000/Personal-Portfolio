@@ -1,7 +1,7 @@
 /* I do not like the standard font for Bootstrap. I have been using EB Garamond and would like to use it. 
 StackOverflow suggests importing the API as such in order to effect the change */
 
-p {
+body {
     font-size: 15px;
 }
 
@@ -20,6 +20,7 @@ p {
     border-bottom: 2px solid #dee2e6;
     padding-bottom: 0.3rem;
     margin-bottom: 1rem;
+    scroll-margin-top: 70px;
 }
 
 .work-card {
