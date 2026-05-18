@@ -58,7 +58,7 @@
                 more targeted OD data is needed. The best option in normal situations should have been Census data, where respondents declare where they live and 
                 where they work and the Office for National Statistics (ONS) do their statistical processing magic to produce a table aggregated by geographical units 
                 (regions, local authorities, MSOAs, etc). The Census also collects information on HOW people travel to work so that one can independently 
-                produce estimates of <strong>how many people travel from any geographical unit A to any geographical unit B on public transport</strong>, 
+                produce estimates of <strong>how many people travel from any geographical unit A to any geographical unit B for work on public transport</strong>, 
                 which is the exact thing that I need! <br><br><br>
                 
 
@@ -93,12 +93,21 @@
                     It is not expanded into the total population for England (since the data is estimated to be only 1%), it does not account for the fact that 
                     individuals may take multiple trips per day between the same two locations. The only reason why they could compare it with Census 2021 for 
                     data validation is through Pearson correlation, not through looking at raw total flows between locations.</li>
+                <li>The data does not give any indication about the transport mode of the trips between the MSOAs. It just lumps them all together...</li>
             </ul>
 
             <p class="description">
                 Nevertheless, this data has two upsides. Firstly, they noted that, based on identified user residential locations, the data is skewed in favour of areas 
                 with higher deprivation indicators, which the research identified as reflecting known socioeconomic biases when dealing with mobile phone data. They 
-                did post-stratification adjustment such that the dataset has equal proportions 
+                did post-stratification adjustment such that the dataset has equal proportions across the deprivation deciles. This indicates that there is some quality 
+                control being done with the data that I have. Secondly, this data does isolate home-to-work trips from every other type of trips based on the stay 
+                locations that they have identified. This makes it quite close to what I need, which is 
+                <strong>how many people travel from any geographical unit A to any geographical unit B for work </strong>, albeit it is all aggregated and not focused 
+                on public transport... <br><br><br>
+
+
+                <h5>Alternative 2: Generating My Own Hypothetical 2026 Travel To Work OD Data</h5>
+                Cognisant of the hot mess that was Census 2021, the ONS actually produced TWO experimental OD datasets
             </p>
         </div>
 
