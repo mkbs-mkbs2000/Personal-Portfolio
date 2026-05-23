@@ -62,3 +62,7 @@ body {
     margin-top: 0.3rem;
     margin-bottom: 0;
 }
+
+p {
+    scroll-margin-top: 70px;
+}

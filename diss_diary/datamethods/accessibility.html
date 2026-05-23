@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Accessibility Analysis</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="../../style.css">
+    </head>
+
+    <body class="bg-warning-subtle">
+
+        <nav class="navbar sticky-top navbar-expand-lg bg-danger-subtle">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="../index.html"><strong>MKBS</strong></a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../past_projects.html"><strong><u>Past Projects</u></strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../secondary_contributions.html"><strong><u>Secondary Contributions</u></strong></a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="../dissertation_diary.html"><strong><u>Dissertation Diary</u></strong></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="container text-center mt-4 mb-4">
+            <h1>Scheduled vs Actual Accessibility Analysis</h1>
+        </div>
+
+        <div class="container mt-4 mb-5">
+            <a type="button" class="btn btn-secondary" href="../datamethods.html">Go back to Data and Methods</a>
+
+            <br><br>
+            
+            <div class="year-heading" id="may18trialmtd">May 18, 2026</div>
+            <p class="description">
+                With reference to <a target="_blank" href="../context.html#workingbackwards1">how I inferred CfC's full methodology</a> on tracking live buses during 
+                morning peak hour, this is how I first tried to align my own analysis to the CfC report while having several tweaks. The tweaks are necessary because 
+                I am no longer just measuring how many people/working adults live within XXX amount of time to the city centre, I am also going to include <strong>OD values</strong> 
+                to measure actual travel demand within that XXX amount of travel time to city centre and hopefully do <strong>spatial interaction modelling</strong> to predict future 
+                demand based on hypothetical public transport improvements. This requires administrative geographical units that may not be uniformed across the entire 
+                relevant area. This will go through several iterations and I will update it here on this specific page as the project progresses along. <br><br>
+
+                Ultimately, comparing between scheduled and actual accessibility, now that I have 
+                <a target="_blank" href="livelocation.html#may17liveloc">extracted and converted GTFS-RT into retrospective GTFS data</a>, is just a matter of doing 
+                two r5py analysis with different sets of GTFS data - one with scheduled and the other with retrospective. The core steps, which as of now are as 
+                follows, remains the same! As of now, I am focusing on Greater Manchester (GM).
+            </p>
+
+            <ol>
+                <li>Load the map of GM, broken down into smaller administrative units. As of now, I am choosing the OA level (which is the smallest administrative level)</li><br>
+                <li>Load in all bus stops from NAPTAN as points and crop it to GM, to be initialised as origins</li><br>
+                <li>Separately, do a spatial join of the cropped GM bus spots with the OAs in GM to find out which bus stops are in which OAs</li><br>
+                <li>Initialise network using r5py.TransportNetwork to include the GM road network and GTFS data of choice</li><br>
+                <li>Set Manchester Piccadilly train station as the destination</li><br>
+                <li>With reference to Steps 2, 4, 5 from above, run r5py.TravelTimeMatrix with the following parameters:</li>
+                <ul>
+                    <li>Set departure time to 0815 BST, but with a 30-min departure time window (so that arrival times to Manchester Piccadilly could be between 0845 and 0915 BST as followed by CfC report)</li>
+                    <li>Set transport mode to only bus (will expand to train and trams in the future)</li>
+                    <li>Set maximum travel time to 1 hour</li>
+                    <li>Set maximum public transport rides to only one to exclude interchanging of buses or to other modes, as per the baseline conditions in CfC report</li>
+                </ul><br>
+                <li>Once the function is complete, calculate median travel times from bus stops in the OAs to Manchester Piccadilly</li>
+            </ol>
+        </div>
+
+        <script src="../../script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    </body>
+</html>
