@@ -48,35 +48,37 @@
             <p class="description">
                 With reference to <a target="_blank" href="../context.html#workingbackwards1">how I inferred CfC's full methodology</a> on tracking live buses during 
                 morning peak hour, this is how I first tried to align my own analysis to the CfC report while having several tweaks. The tweaks are necessary because 
-                I am no longer just measuring how many people/working adults live within XXX amount of time to the city centre, I am also going to include <strong>OD values</strong> 
-                to measure actual travel demand within that XXX amount of travel time to city centre and hopefully do <strong>spatial interaction modelling</strong> to predict future 
-                demand based on hypothetical public transport improvements. This requires administrative geographical units that may not be uniformed across the entire 
-                relevant area. This will go through several iterations and I will update it here on this specific page as the project progresses along. <br><br>
+                I am no longer just measuring how many people/working adults live within a certain amount of time to the city centre, I am also going to include OD 
+                values to measure actual travel demand to the city centre and hopefully do spatial interaction modelling to predict future demand based on hypothetical 
+                public transport improvements. This requires administrative geographical units that may not be uniformed across the entire relevant area, so there will 
+                be some introduction of median values in the steps. This will go through several iterations and I will update it here on this specific page as the 
+                project progresses along. <br><br>
 
-                Ultimately, comparing between scheduled and actual accessibility, now that I have 
-                <a target="_blank" href="livelocation.html#may17liveloc">extracted and converted GTFS-RT into retrospective GTFS data</a>, is just a matter of doing 
-                two r5py analysis with different sets of GTFS data - one with scheduled and the other with retrospective. The core steps, which as of now are as 
-                follows, remains the same! As of now, I am focusing on Greater Manchester (GM).
+                Ultimately, comparing between scheduled and actual accessibility is just a matter of doing two r5py analysis with different sets of GTFS data -- one 
+                with scheduled and the other with retrospective -- now that I have 
+                <a target="_blank" href="livelocation.html#may17liveloc">extracted and converted GTFS-RT into retrospective GTFS data</a>. The core steps, which are 
+                described, remains the same!
             </p>
 
             <ol>
-                <li>Load the map of GM, broken down into smaller administrative units. As of now, I am choosing the OA level (which is the smallest administrative level)</li><br>
-                <li>Load in all bus stops from NAPTAN as points and crop it to GM, to be initialised as origins</li><br>
-                <li>Separately, do a spatial join of the cropped GM bus spots with the OAs in GM to find out which bus stops are in which OAs</li><br>
-                <li>Initialise network using r5py.TransportNetwork to include the GM road network and GTFS data of choice</li><br>
-                <li>Set Manchester Piccadilly train station as the destination</li><br>
+                <li>Load the map of relevant city region, broken down into smaller administrative units. As of now, I am choosing the OA level (which is the smallest administrative level)</li><br>
+                <li>Load in all bus stops from NAPTAN as points and crop it to the same city area, to be initialised as origins</li><br>
+                <li>Separately, do a spatial join of the cropped bus stops with the OAs to find out which bus stops are in which OAs</li><br>
+                <li>Initialise network using r5py.TransportNetwork to include the city region's road network and GTFS data of choice</li><br>
+                <li>Set one place of interest in the city centre as the destination</li><br>
                 <li>With reference to Steps 2, 4, 5 from above, run r5py.TravelTimeMatrix with the following parameters:</li>
                 <ul>
-                    <li>Set departure time to 0815 BST, but with a 30-min departure time window (so that arrival times to Manchester Piccadilly could be between 0845 and 0915 BST as followed by CfC report)</li>
+                    <li>Set departure time to 0815 BST, but with a 30-min departure time window (so that arrival times could be between 0845 and 0915 BST as per the CfC report)</li>
                     <li>Set transport mode to only bus (will expand to train and trams in the future)</li>
                     <li>Set maximum travel time to 1 hour</li>
                     <li>Set maximum public transport rides to only one to exclude interchanging of buses or to other modes, as per the baseline conditions in CfC report</li>
                 </ul><br>
-                <li>Once the function is complete, calculate median travel times from bus stops in the OAs to Manchester Piccadilly</li>
+                <li>Once the function is complete, calculate median travel times from bus stops in the OAs to the city centre</li>
             </ol>
 
             <p class="description">
-                Does this work now?
+                I did the aforementioned steps for Greater Manchester, with the destination set as Manchester Piccadilly train station. The initial results are 
+                <a>HERE!</a>
             </p>
         </div>
 

@@ -47,19 +47,15 @@
             <div class="year-heading" id="may15od">May 15, 2026</div>
             <p class="description">
                 As I staked my claim to bring in OD matrix data as my primary contribution to this research, the next immediate step is to then source for the 
-                appropriate OD data. OD data comes in different forms, depending on who produces the data. For example, TfL can use tap-in-tap-out data from all 
-                their Underground, Overground and DLR stations to produce OD matrices showing where within the London rail network do people start their 
-                journeys and where do they end them. (This is why it is vital for people to tap in! On top of paying the fares to support the system, it will also help 
-                PT agencies and researchers to understand travel patterns and make informed decisions on service planning and infrastructure development! But that's a 
-                ramble for another time...) <br><br>
+                appropriate OD data. One of the most common providers of OD data is public transport operators, such as Transport for London (TfL), which uses 
+                tap-in-tap-out data to show where people start and end their journeys. <br><br>
                 
                 Public transport-derived OD matrices however is not necessarily the best tool for my specific case because it is data about flows between public 
                 transport stops for all kinds of purposes. My research is more on improving accessibility to city centres for WORK purposes, thus what I need is data 
-                about <strong>how many people travel from home to work</strong>. The best option in normal situations should have been Census data, where respondents 
+                about <strong>how many people travel from home to work using public transport</strong>. The best option in normal situations should have been Census data, where respondents 
                 declare where they live and where they work and the Office for National Statistics (ONS) do their statistical processing magic to produce a table 
                 aggregated by geographical units (regions, local authorities, MSOAs, etc) -- this is also known as Travel To Work (TTW) data. The Census also collects 
-                information on HOW people travel to work so that one can independently produce estimates of how many people travel from home to work 
-                <strong>on public transport</strong>, which is the exact thing that I need! <br><br><br>
+                information on the mode of transport used to travel to work! <br><br><br>
                 
 
                 <h5>The Problem with Census 2021 Travel To Work Data</h5>
@@ -75,13 +71,13 @@
                 company that sells the data to the researchers, aggregated the data from over 200 apps used by almost 800,000 devices - so essentially it came from 
                 UK-based apps where you guys may have agreed to share your location details while using them or at all times! One of the OD matrices that the 
                 researchers produced is on <strong>how many trips from a home MSOA to a work MSOA in total in November 2021</strong>. This is not exactly what I need 
-                because it is a specific monthly aggregate (not a daily average) of trips (which does not map out one-to-one with number of people) made by the devices 
-                (not of the entire population). Inasmuch as November 2021 was when lockdowns were slightly eased in England, I have been advised that it may not be 
-                fully representative of post-COVID commuting patterns (the post-COVID patterns somewhat reached an equilibrium only by 2023). <br><br><br>
+                because it is a specific monthly aggregate (not a daily average) of trips made by the devices (not people). Inasmuch as November 2021 was when the 
+                lockdowns were slightly eased in England, I have been advised that it may not be fully representative of post-COVID commuting patterns (the post-COVID 
+                patterns somewhat reached an equilibrium only by 2023). <br><br><br>
 
 
                 <h5>Alternative 2: Generating My Own Hypothetical 2026 TTW OD Data</h5>
-                Cognisant of the hot mess that was Census 2021, and the outcome that it had on the TTW, the ONS actually produced 
+                Cognisant of the hot mess that was Census 2021, and the impacts that it had on the TTW, the ONS actually produced 
                 <a target="_blank" href="https://www.ons.gov.uk/releases/estimationoftraveltoworkmatricesenglandandwales">TWO counterfactual TTW datasets for 2021</a>, 
                 assuming pre-COVID and during COVID travel patterns. They 
                 <a target="_blank" href="https://datasciencecampus.ons.gov.uk/projects/technical-report-estimation-of-travel-to-work-matrices">explained at length</a> 
@@ -96,7 +92,7 @@
 
             <ul>
                 <li>Firstly, which base OD data am I going to use to calibrate the doubly-constrained SIM that will in turn generate the 2026 counterfactual OD data? 
-                    The quality of my generated OD data will only be as good as base data used to calibrate the parameters...</li>
+                    The quality of my generated OD data will only be as good as base data used to calibrate the parameters, remember GIGO...</li>
                 <li>Secondly, my generated 2026 data will also be just another experimental OD data - I will run into the same validation problem as ONS...</li>
                 <li>Thirdly, some of the data that the ONS used in generating the counterfactual data is not accessible to the public - they have the data because 
                     they collected it to begin with and it cannot be released due to GDPR issues. So I cannot recreate it to the tee...</li>
