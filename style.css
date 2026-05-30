@@ -66,3 +66,14 @@ body {
 p {
     scroll-margin-top: 70px;
 }
+
+.supervisor {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.hyperlink:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}

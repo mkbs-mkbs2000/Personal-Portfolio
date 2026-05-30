@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Accessibility Analysis</title>
+        <title>Accessibility Steps</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="../../style.css">
     </head>
@@ -36,7 +36,7 @@
         </nav>
         
         <div class="container text-center mt-4 mb-4">
-            <h1>Scheduled vs Actual Accessibility Analysis</h1>
+            <h1>Scheduled vs Actual Accessibility Analysis Steps</h1>
         </div>
 
         <div class="container mt-4 mb-5">
@@ -46,8 +46,8 @@
             
             <div class="year-heading" id="may18trialmtd">May 18, 2026</div>
             <p class="description">
-                With reference to <a target="_blank" href="../context.html#workingbackwards1">how I inferred CfC's full methodology</a> on tracking live buses during 
-                morning peak hour, this is how I first tried to align my own analysis to the CfC report while having several tweaks. The tweaks are necessary because 
+                With reference to <a target="_blank" href="../context.html#may14context">CfC's baseline conditions</a> of a 'reasonable' morning peak hour journey 
+                to the city centre, this is how I first tried to align my own analysis to the CfC report while having several tweaks. The tweaks are necessary because 
                 I am no longer just measuring how many people/working adults live within a certain amount of time to the city centre, I am also going to include OD 
                 values to measure actual travel demand to the city centre and hopefully do spatial interaction modelling to predict future demand based on hypothetical 
                 public transport improvements. This requires administrative geographical units that may not be uniformed across the entire relevant area, so there will 
@@ -73,12 +73,13 @@
                     <li>Set maximum travel time to 1 hour</li>
                     <li>Set maximum public transport rides to only one to exclude interchanging of buses or to other modes, as per the baseline conditions in CfC report</li>
                 </ul><br>
-                <li>Once the function is complete, calculate median travel times from bus stops in the OAs to the city centre</li>
+                <li>Once the function is complete, calculate median travel times from bus stops in the OAs to the city centre</li><br>
+                <li>Filter for OAs where median travel times are less than or equal to 30 minutes</li>
             </ol>
 
             <p class="description">
                 I did the aforementioned steps for Greater Manchester, with the destination set as Manchester Piccadilly train station. The initial results are 
-                <a>HERE!</a>
+                <a href="../results/access_results.html#may18results">HERE!</a>
             </p>
         </div>
 
