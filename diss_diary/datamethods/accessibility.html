@@ -62,7 +62,7 @@
 
             <ol>
                 <li>Load the map of relevant city region, broken down into smaller administrative units. As of now, I am choosing the OA level (which is the smallest administrative level)</li><br>
-                <li>Load in all bus stops from NAPTAN as points and crop it to the same city area, to be initialised as origins</li><br>
+                <li>Load in all bus stops from <a target="_blank" href="https://beta-naptan.dft.gov.uk/">NAPTAN</a> as points and crop it to the same city area, to be initialised as origins</li><br>
                 <li>Separately, do a spatial join of the cropped bus stops with the OAs to find out which bus stops are in which OAs</li><br>
                 <li>Initialise network using r5py.TransportNetwork to include the city region's road network and GTFS data of choice</li><br>
                 <li>Set one place of interest in the city centre as the destination</li><br>

@@ -60,15 +60,15 @@
                 <div class="row">
                     <div class="col">
                         <a target="_blank" href="https://esrasuel.github.io/"><img src="../data/esra_suel.jpg" alt="Esra Suel" class="img-fluid rounded supervisor hyperlink"></a><br>
-                        Esra Suel
+                        <i>Esra Suel</i>
                     </div>
                     <div class="col">
                         <a target="_blank" href="https://cpeiretgarcia.github.io/"><img src="../data/clara_peiret_garcia.jpeg" alt="Clara Peiret-Garcia" class="img-fluid rounded supervisor hyperlink"></a><br>
-                        Clara Peiret-Garcia
+                        <i>Clara Peiret-Garcia</i>
                     </div>
                     <div class="col">
                         <a target="_blank" href="https://www.centreforcities.org/about/person/rob-johnson/"><img src="../data/rob_johnson.jpg" alt="Rob Johnson" class="img-fluid rounded supervisor hyperlink"></a><br>
-                        Rob Johnson
+                        <i>Rob Johnson</i>
                     </div>
                 </div>
             </div><br>
@@ -120,12 +120,15 @@
                 Based on this initial context, there are four lines of inquiry that I am interested to explore:
             </p>
 
-            <ol>
-                <li>How many people ACTUALLY benefited from a direct 30/45 min journey to work at the city centre based on actual bus travel times?</li><br>
-                <li>How many people SHOULD HAVE benefited from a direct 30/45 min journey to work at the city centre based on scheduled bus times but don't because actual bus times are slower?</li><br>
-                <li>How many people OUGHT to have a direct 30/45 min journey to work at the city centre but can't because scheduled bus times just cannot even afford them the opportunity to begin with?</li><br>
-                <li>Using spatial interaction modelling, how will these three numbers change when the three improvements take place?</li>
-            </ol>
+            <div class="work-card">
+                <div class="title">Lines of Inquiry</div>
+                <ol>
+                    <li>How many people ACTUALLY benefited from a direct 30/45 min journey to work at the city centre based on actual bus travel times?</li>
+                    <li>How many people SHOULD HAVE benefited from a direct 30/45 min journey to work at the city centre based on scheduled bus times but don't because actual bus times are slower?</li>
+                    <li>How many people OUGHT to have a direct 30/45 min journey to work at the city centre but can't because scheduled bus times just cannot even afford them the opportunity to begin with?</li>
+                    <li>Using spatial interaction modelling, how will these three numbers change when the three improvements take place?</li>
+                </ol>
+            </div>
 
             <p class="description">
                 Why? The CfC research uses <strong>actual bus travel journeys</strong> to generate their findings. This already puts it apart from current 
@@ -152,7 +155,64 @@
                 <strong>what could ACTUALLY happen to the flows towards city centre - or maybe across the city region - if the three aforementioned improvements take 
                     place (Inquiry 4)</strong>. <br><br>
                 
-                As of today, I have yet to formulate a central research question to connect these four sub-questions...
+                As of today, I have yet to formulate a central research question to connect these four inquiries...
+            </p><br>
+
+            <div class="year-heading" id="may31context">May 31, 2026</div>
+            <p class="description">
+                I took a fairly long break from my dissertation because I went to Switzerland for 
+                <a target="_blank" href="https://www.iihf.com/en/events/2026/wm">Ice Hockey World Championships</a> and was rudely welcomed by 
+                <a target="_blank" href="https://www.bbc.co.uk/weather/articles/cx2114xqv05o">a week-long heatwave</a> upon my return to London. But before I left, I 
+                was able to have my first in-person meeting with Rob at the CfC office on Monday (May 18) and consultations with Esra and Clara on Tuesday (May 19). 
+                That meant that the dissertation was still somehow lingering at the back of my mind as I cheered for Team Canada and suffered through the heatwave 
+                &#x1FAE0;. <br><br>
+
+                <h5>Takeaways from Rob's Meeting on Monday</h5>
+                Firstly, I misunderstood condition 5 of the baseline conditions from the CfC report. As you can scroll from above, I thought that ONLY the public 
+                transport leg of the journey has the limit of 30 or 45 minutes. However, I have been clarified that it was the ENTIRE journey that has to be within 
+                30 or 45 minutes flat, not a potentially 61 minutes commute. The workflow for CfC's research, I have come to understand, may have actually went like 
+                this...
+            </p>
+
+            <div class="col-md-8 mx-auto text-center">
+                <img src="../data/cfc_clarified_flowchart.png" alt="Visualisation ofCfC Clarified Methodology" class="img-fluid rounded">
+                <i>I asked Claude to create this flowchart of how I understood CfC's methodology after clarification</i>
+            </div><br> 
+
+            <p class="description">
+                Secondly, Rob and I discussed about the OD Matrix Woes (<a target="_blank" href="datamethods/odmatrix.html#may15od">see my ramblings on this</a>). One 
+                of the solutions he proposed as of now is to actually use one of the counterfactuals produced by ONS assuming pre-COVID commuting patterns considering 
+                that the Locomizer data was still during COVID and I have yet to get access to the Huq data. I offered to do a sanity check of that dataset with 
+                <a target="_blank" href="https://tfgm.com/trads">the post-COVID travel diary survey from Greater Manchester</a> and likely from Greater London too, to 
+                see if at least the data matches/falls in the same ballpark at the regional level. I am exploring to use Pearson's correlation to do this comparison 
+                and I will update more in the OD Matrix page! However, that means that the validity is only checked at specific regions, and if I were to expand to 
+                other cities like Bristol or Nottingham, we would be assuming that the counterfactual data is representative of those regions too without any checks. <br><br>
+
+                Thirdly, Rob shared the private Github repo that CfC relied on to create their report. This crucially has the data on the city centre boundaries, which 
+                will supplement <a target="_blank" href="datamethods/accessibility.html">the quick-and-dirty accessibility analysis</a> that I have already produced. I 
+                also found that CfC did their analysis in R, and I will have to make a decision on whether I want to continue my dissertation work in Python or convert 
+                to R (or maybe do both!) <br><br>
+
+                <h5>Takeaways from Esra and Clara's Meeting on Tuesday</h5>
+                The day was split into two parts, where in the first half Clara organised a workshop on how to do literature review and formulate the central research 
+                question (which I still have not concretised). I was introduced to <a target="_blank" href="https://app.researchrabbit.ai/">Research Rabbit</a>, a tool 
+                that lets users to list down the current papers that they have. The tool will then generate a network of papers arranged based on publication year and 
+                citation count (a measure of the paper's influence). The tool can then suggest papers that could connect between the foundational papers on concepts 
+                like transport justice with parallel research that looks at the transport justice in certain localities. I thought this is cool and I will be using it 
+                and sharing the map here as I embark on the literature review process (which I have not started and I know I need to do it soon, it is already June...) <br><br>
+
+                The second half was the meeting with Esra and Clara, where I shared the takeaways from Monday's meeting with Rob and my four lines of inquiry but the 
+                lack of an overarching research question. I was assured that this is a slightly better position than having a central research question but no detailed 
+                research plan because I can develop it as the research plan progresses, based on what good data is/becomes available. Due to the uncertainties with the 
+                OD data (which affects the feasibility of doing Spatial Interaction Modelling to project demand changes based on hypothetical improvements to the public 
+                transport system), Esra suggested a back-up option of exploring transport injustice between scheduled vs actual accessibility to the city centre in 
+                baseline conditions and in each of the three hypothetical improvements to the public transport network. The metric for comparison would revert back to 
+                the estimated population within the isochrones, in line with CfC and the rest of the literature, instead of using travel demand based on OD data. <br><br>
+
+                As of now, my half-baked overarching research question is as follows: <br><br>
+                <h6>To what extent does public transport in Manchester, Nottingham and Bristol perpetuate transport injustice by failing to provide workers with 
+                    reasonable journey times to city centres — due to unreliability, inadequate scheduling, or both — and what would the commuting landscape look like 
+                    under targeted service improvements?</h6>
             </p>
 
         </div>

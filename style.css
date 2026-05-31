@@ -44,6 +44,13 @@ body {
     margin-bottom: 0.2rem;
 }
 
+.work-card .title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 0.5rem;
+}
+
 .work-card .title a {
     font-size: 1rem;
     font-weight: 600;
@@ -76,4 +83,20 @@ p {
 .hyperlink:hover {
     cursor: pointer;
     opacity: 0.8;
+}
+
+.work-card ol {
+    list-style: none;
+    counter-reset: my-counter;
+    padding-left: 1.5em;
+}
+
+.work-card ol li {
+    counter-increment: my-counter;
+}
+
+.work-card ol li::before {
+    content: counter(my-counter) ".";
+    font-weight: bold;
+    margin-right: 0.5em;
 }
