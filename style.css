@@ -112,3 +112,9 @@ p {
 img {
     scroll-margin-top: 70px;
 }
+
+img-comparison-slider {
+    --divider-width: 3.5px;
+    --divider-color: #000e90;
+    --handle-opacity: 1;
+}

@@ -6,6 +6,8 @@
         <title>Accessibility Results</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="../../style.css">
+        <script type="module" src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css">
     </head>
 
     <body class="bg-warning-subtle">
@@ -70,7 +72,16 @@
                 boundaries set by the ONS. CfC has the data on this, and I do not have them as of date. Meanwhile, my map is based on travel just to Manchester 
                 Piccadilly, just one point within the city centre. So it is not surprising that when compared with CfC's visualisation of baseline conditions at 30 
                 minutes, my map shows a smaller area of accessibility.
-            </p>
+            </p><br>
+
+            <div class="year-heading" id="june2results">June 2, 2026</div>
+            <div class="col-md-8 mx-auto text-center">
+                <img-comparison-slider>
+                    <img slot="first" src="june2mtd1.png" class="img-fluid rounded" alt="Method 1">
+                    <img slot="second" src="june2mtd2.png" class="img-fluid rounded" alt="Method 2">
+                </img-comparison-slider>
+                <i>Swipe right to see Method 1 results, swipe left to see Method 2 results. Quick-and-dirty maps developed via QGIS</i>
+            </div>
         </div>
 
         <script src="../../script.js"></script>

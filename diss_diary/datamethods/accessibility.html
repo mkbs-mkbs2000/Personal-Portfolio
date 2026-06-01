@@ -67,7 +67,7 @@
                     <li>Separately, do a spatial join of the cropped bus stops with the OAs to find out which bus stops are in which OAs</li>
                     <li>Initialise network using r5py.TransportNetwork to include the city region's road network and GTFS data of choice</li>
                     <li>Set one place of interest in the city centre as the destination</li>
-                    <li>With reference to Steps 2, 4, 5 from above, run r5py.TravelTimeMatrix with the following parameters:</li>
+                    <li>Run r5py.TravelTimeMatrix with the following parameters:</li>
                     <ul>
                         a) Set departure time to 0815 BST, but with a 30-min departure time window (so that arrival times could be between 0845 and 0915 BST as per the CfC report)</li>
                         b) Set transport mode to only bus (will expand to train and trams in the future)</li>
@@ -112,7 +112,7 @@
                     <ul>
                         a) Set departure time to 0815 BST, but with a 30-min departure time window (so that arrival times could be between 0845 and 0915 BST as per the CfC report)<br>
                         b) Set transport mode to only bus <strong>and walking</strong> (will expand to train and trams in the future)<br>
-                        c) Set maximum travel time to 40 mins <strong>and maximum walking time to 10 mins</strong> (this is to measure travel within 30 mins only, can be amended to measure travel within 45 mins)<br>
+                        c) Set maximum travel time to 1 hour <strong>and maximum walking time to 10 mins</strong> (this is to measure travel within 30 mins only, can be amended to measure travel within 45 mins)<br>
                         d) Set maximum public transport rides to only one to exclude interchanging of buses or to other modes, as per the baseline conditions in CfC report
                     </ul></li>
                     <li>For each origin with travel time values, get the median travel time to the bus stops in city centre</li>
@@ -131,7 +131,7 @@
                     <ul>
                         a) Set departure time to 0815 BST, but with a 30-min departure time window (so that arrival times could be between 0845 and 0915 BST as per the CfC report)<br>
                         b) Set transport mode to only bus (will expand to train and trams in the future)<br>
-                        c) Set maximum travel time to 40 mins to reduce computational load (this is to measure travel within 30 mins only, can be amended to measure travel within 45 mins)<br>
+                        c) Set maximum travel time to 1 hour (this is to measure travel within 30 mins only, can be amended to measure travel within 45 mins)<br>
                         d) Set maximum public transport rides to only one to exclude interchanging of buses or to other modes, as per the baseline conditions in CfC report
                     </ul>
                     <li>For each origin bus stop that has travel time values, get the median travel time to the bus stops in city centre</li>
@@ -144,7 +144,7 @@
             <p class="description">
                 As of now, I have NOT run the code yet. I am expecting Method 1 to be computationally faster than Method 2, but Method 1 may also produce a smaller 
                 coverage than Method 2. I intend to run the steps using Greater Manchester as the example again, and you can see the results 
-                <u>here once the hyperlink is updated</u>.
+                <a href="../results/access_results.html#june2results">HERE</a>.
             </p>
         </div>
 
