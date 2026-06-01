@@ -70,10 +70,10 @@
                 <a target="_blank" href="https://www.ucl.ac.uk/module-catalogue/modules/urban-simulation-CASA0002">CASA0002: Urban Simulation</a>. Locomizer, the 
                 company that sells the data to the researchers, aggregated the data from over 200 apps used by almost 800,000 devices - so essentially it came from 
                 UK-based apps where you guys may have agreed to share your location details while using them or at all times! One of the OD matrices that the 
-                researchers produced is on <strong>how many trips from a home MSOA to a work MSOA in total in November 2021</strong>. This is not exactly what I need 
-                because it is a specific monthly aggregate (not a daily average) of trips made by the devices (not people). Inasmuch as November 2021 was when the 
-                lockdowns were slightly eased in England, I have been advised that it may not be fully representative of post-COVID commuting patterns (the post-COVID 
-                patterns somewhat reached an equilibrium only by 2023). <br><br><br>
+                researchers produced is on <strong>how many trips from a home MSOA to a work MSOA in total in November 2021, based on 2021 boundaries</strong>. This is 
+                not exactly what I need because it is a specific monthly aggregate (not a daily average) of trips made by the devices (not people). Inasmuch as November 
+                2021 was when the lockdowns were slightly eased in England, I have been advised that it may not be fully representative of post-COVID commuting patterns 
+                (the post-COVID patterns somewhat reached an equilibrium only by 2023). <br><br><br>
 
 
                 <h5>Alternative 2: Generating My Own Hypothetical 2026 TTW OD Data</h5>
@@ -84,7 +84,8 @@
                 about how they produced their estimates using doubly-constrained spatial interaction modelling (SIM) and compared it with the actual Census 2021 TTW 
                 data - both counterfactual TTW datasets produce higher aggregates of people commuting to work than the actual Census 2021 TTW dataset. While I could 
                 stop and use this data, the ONS made it very clear that this is experimental and should not be used to make policy decisions because they have not been 
-                able to validate their counterfactuals with more accurate data (mobile phone data, regional travel diaries, etc.). <br><br>
+                able to validate their counterfactuals with more accurate data (mobile phone data, regional travel diaries, etc). Also, the data is based on 
+                <strong>MSOA 2011 boundaries, not even the most recent one</strong>, but it may be a small boundary issue after all... <br><br>
                 
                 What I am interested in doing though is to follow the steps that ONS has outlined in their report to make my own counterfactual OD data up to 2026. THIS 
                 is where I had my first back-and-forth with Claude to identify the feasibility of this idea just for an MSc dissertation - and Claude pushed back hard. 
@@ -111,7 +112,95 @@
 
 
                 At the moment, none of the three alternatives are satisfying. I am not sure how to move forward with this...
+            </p><br>
+
+            <div class="year-heading" id="june1compare">June 1, 2026</div>
+            <p class="description">
+                As of date, I only have full access to the ONS counterfactuals and Locomizer data. I have not had access to the Huq OD dataset yet. I won't do a full 
+                statistical evaluation of the datasets, I just need to do a sanity check and see if any of them CAN be used for my dissertation. Also as of date, the 
+                only authoritative data that I trust which provides OD data post-COVID is the 
+                <a target="_blank" href="https://tfgm.com/trads">Greater Manchester Travel Diary Surveys (TRADS)</a>, which they have been doing annually since 2022. 
+                Latest data is for 2024 (I am going to assume that 2025 outcomes would only be published in late 2026, after my dissertation is due). So the idea is to 
+                compare the ONS counterfactuals and Locomizer data with 2024 TRADS data, essentially somewhat 'validating' it with actual data for one city region. I 
+                would have loved to at least validate it with one more city region (Greater London) but TfL does not release OD data from borough-to-borough like 
+                Greater Manchester. <br><br>
+
+                This is where I asked Claude to suggest me two to three ways to compare the potential OD datasets with the 'gold standard' (2024 GM TRADS). Claude 
+                suggested me the following:
             </p>
+
+            <ol>
+                <li>Aggregate the OD data into the Local Authority level and just eyeball the differences. No stats madness needed</li>
+                <li>Pearson's Correlation Coefficient: This will show if the travel patterns exhibited in the potential datasets match the 'gold standard', even if the actual numbers are wildly off</li>
+                <li>Standardised Root Mean Square Error: This will show how far off the actual flows are in the potential datasets from the 'gold standard'</li>
+            </ol><br>
+
+            <p class="description">
+                Very well, here we go! <br><br>
+
+                <h5>Pre-Processing Steps</h5>
+
+                <h6>1. 2024 GM TRADS Data (the 'gold standard')</h6>
+                Greater Manchester publishes daily average trip data at district (local authority) level, not MSOA, 
+                <strong>after they have expanded the results from their sample</strong>. That is why this entire sanity check needs to be done at LA level. Helpfully, 
+                they have provided a fairly detailed breakdown of trips based on purpose, so I am able to isolate trips for 'business and commuting'. They also 
+                published Origin-Destination data as percentage shares out of total trips originating from each LA, not raw trip counts. Nevertheless, they also 
+                separately provided raw trip counts after rounding off, so I could reverse engineer the specific flow numbers from LAs to LAs. <br><br>
+
+                <h6>2. Locomizer Nov 2021 Data (Potential #1)</h6>
+                As previously mentioned, the researchers isolated for trips to work throughout November 2021 from their overall mobile phone data (which is claimed to 
+                be about slightly more than 1% of England's total population) and arranged them into OD matrices based on MSOAs using 2021 boundaries. So, some 
+                calculations needed to be done - expand the data to cover the entire England population, and then divide by the 30 days in November. Only after that 
+                could I use the 2021 MSOA-LAD lookup to aggregate them to LA level. <br><br>
+
+                <h6>3. ONS Counterfactuals Data (Potentials #2 and #3)</h6>
+                No isolation of data is needed because this is EXACTLY the data I need, of people going from origin to destination for work! It is just that they are 
+                counterfactuals, and that they used 2011 MSOA boundaries instead of 2021, so I needed to source for 2011 MSOA-LAD lookup to aggregate them. I want to 
+                compare BOTH the counterfactuals assuming pre-COVID travel patterns (Potential #2) and during COVID travel patterns (Potential #3). <br><br>
+
+                <h5>Just Eyeballing</h5>
+            </p>
+            
+            <div class="col-md-8 mx-auto text-center">
+                <img src="goldstandard.png" alt="Pivot Table of Origin-Destination Flows from 2024 Greater Manchester Travel Diary Survey" class="img-fluid rounded">
+                <i>The <strong>'gold standard'</strong> of flows between across Local Authorities in Greater Manchester based on 2024 TRADS</i><br><br>
+
+                <div id="matrixSlideshow">
+                    <div class="matrix-slide active">
+                        <img src="locomizer.png" alt="Pivot Table from Locomizer November 2021 Mobile Phone Data" class="img-fluid rounded">
+                        <p class="mt-2"><i><strong>Potential #1:</strong> Locomizer Mobile Phone Data</i></p>
+                    </div>
+
+                    <div class="matrix-slide">
+                        <img src="onsnopandemic.png" alt="Pivot Table from Counterfactual TTW Data assuming Pre-COVID Travel Patterns" class="img-fluid rounded">
+                        <p class="mt-2"><i><strong>Potential #2:</strong> Counterfactual assuming Pre-COVID Travel Patterns</i></p>        
+                    </div>
+
+                    <div class="matrix-slide">
+                        <img src="onspandemic.png" alt="Pivot Table from Counterfactual TTW Data assuming During COVID Travel Patterns" class="img-fluid rounded">
+                        <p class="mt-2"><i><strong>Potential #3:</strong> Counterfactual assuming During COVID Travel Patterns</i></p>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center align-items-center gap-3 mt-3">
+                    <button class="btn btn-outline-secondary btn-sm" onclick="changeSlide(-1)">&#8592; Prev</button>
+                    <span id="slideCounter" class="text-muted" style="font-size: 0.9rem;">1 / 4</span>
+                    <button class="btn btn-outline-secondary btn-sm" onclick="changeSlide(1)">Next &#8594;</button>
+                </div>
+            </div>
+                
+            <p class="description">
+                Right off the bat, we see that Potential #1 is the worst because after transformation (expanding the data to cover England's population, and then 
+                dividing by 30 days), the flow values are 10 times less than the 'gold standard' or the other two potential datasets...
+                <br><br>
+
+                <h5>Statistical Measures</h5>
+            </p>
+
+            <div class="col-md-8 mx-auto text-center">
+                <img src="stats.png" alt="Results of " class="img-fluid rounded"><br>
+                <i>Results of Pearson Correlation Coefficient and Standardised RMSE between the 'gold standard' and potential datasets</i>
+            </div>
         </div>
 
         <script src="../../script.js"></script>

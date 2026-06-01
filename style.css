@@ -100,3 +100,11 @@ p {
     font-weight: bold;
     margin-right: 0.5em;
 }
+
+/* OD Matrix slideshow */
+.matrix-slide {
+    display: none;
+}
+.matrix-slide.active {
+    display: block;
+}

@@ -9,3 +9,14 @@ function no() {
   document.getElementById('yesorno').style.display = "none";
   document.getElementById('nomessage').style.display = "block";
 }
+
+// OD Matrix image slideshow
+let currentSlide = 0;
+const slides = document.querySelectorAll('.matrix-slide');
+
+function changeSlide(direction) {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + direction + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+    document.getElementById('slideCounter').textContent = (currentSlide + 1) + ' / ' + slides.length;
+}
