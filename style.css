@@ -108,3 +108,7 @@ p {
 .matrix-slide.active {
     display: block;
 }
+
+img {
+    scroll-margin-top: 70px;
+}

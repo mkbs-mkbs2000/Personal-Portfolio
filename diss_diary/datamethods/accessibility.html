@@ -36,7 +36,7 @@
         </nav>
         
         <div class="container text-center mt-4 mb-4">
-            <h1>Scheduled vs Actual Accessibility Analysis Steps</h1>
+            <h1>Scheduled-vs-Actual Accessibility Analysis Steps</h1>
         </div>
 
         <div class="container mt-4 mb-5">
@@ -60,26 +60,91 @@
                 described, remains the same!
             </p>
 
-            <ol>
-                <li>Load the map of relevant city region, broken down into smaller administrative units. As of now, I am choosing the OA level (which is the smallest administrative level)</li><br>
-                <li>Load in all bus stops from <a target="_blank" href="https://beta-naptan.dft.gov.uk/">NAPTAN</a> as points and crop it to the same city area, to be initialised as origins</li><br>
-                <li>Separately, do a spatial join of the cropped bus stops with the OAs to find out which bus stops are in which OAs</li><br>
-                <li>Initialise network using r5py.TransportNetwork to include the city region's road network and GTFS data of choice</li><br>
-                <li>Set one place of interest in the city centre as the destination</li><br>
-                <li>With reference to Steps 2, 4, 5 from above, run r5py.TravelTimeMatrix with the following parameters:</li>
-                <ul>
-                    <li>Set departure time to 0815 BST, but with a 30-min departure time window (so that arrival times could be between 0845 and 0915 BST as per the CfC report)</li>
-                    <li>Set transport mode to only bus (will expand to train and trams in the future)</li>
-                    <li>Set maximum travel time to 1 hour</li>
-                    <li>Set maximum public transport rides to only one to exclude interchanging of buses or to other modes, as per the baseline conditions in CfC report</li>
-                </ul><br>
-                <li>Once the function is complete, calculate median travel times from bus stops in the OAs to the city centre</li><br>
-                <li>Filter for OAs where median travel times are less than or equal to 30 minutes</li>
-            </ol>
+            <div class="work-card">
+                <ol>
+                    <li>Load the map of relevant city region, broken down into smaller administrative units. As of now, I am choosing the OA level (which is the smallest administrative level)</li>
+                    <li>Load in all bus stops from <a target="_blank" href="https://beta-naptan.dft.gov.uk/">NaPTAN</a> as points and crop it to the same city area, to be initialised as origins</li>
+                    <li>Separately, do a spatial join of the cropped bus stops with the OAs to find out which bus stops are in which OAs</li>
+                    <li>Initialise network using r5py.TransportNetwork to include the city region's road network and GTFS data of choice</li>
+                    <li>Set one place of interest in the city centre as the destination</li>
+                    <li>With reference to Steps 2, 4, 5 from above, run r5py.TravelTimeMatrix with the following parameters:</li>
+                    <ul>
+                        a) Set departure time to 0815 BST, but with a 30-min departure time window (so that arrival times could be between 0845 and 0915 BST as per the CfC report)</li>
+                        b) Set transport mode to only bus (will expand to train and trams in the future)</li>
+                        c) Set maximum travel time to 1 hour</li>
+                        d) Set maximum public transport rides to only one to exclude interchanging of buses or to other modes, as per the baseline conditions in CfC report</li>
+                    </ul>
+                    <li>Once the function is complete, calculate median travel times from bus stops in the OAs to the city centre</li>
+                    <li>Filter for OAs where median travel times are less than or equal to 30 minutes</li>
+                </ol>
+            </div>
 
             <p class="description">
                 I did the aforementioned steps for Greater Manchester, with the destination set as Manchester Piccadilly train station. The initial results are 
                 <a href="../results/access_results.html#may18results">HERE!</a>
+            </p><br>
+
+            <div class="year-heading" id="june1updatemtd">June 1, 2026</div>
+            <p class="description">
+                From May 18 until today, I have gathered several important pieces of info.
+            </p>
+
+            <ul>
+                <li>I now know better about <a target="_blank" href="../context.html#clarifiedflowchart">CfC's methodology for their report</a>, so that I can better streamline my own methods for analysis.</li>
+                <li>I also have information from CfC about the areas that they deem as city centres in Manchester, Nottingham and Bristol.</li>
+                <li>I have decided on an OD dataset, which in turn pushed me to use 2011 MSOA administrative boundaries as the spatial unit of analysis for my dissertation.</li>
+            </ul>
+
+            <p class="description">
+                That means that the quick-and-dirty analysis steps have to be modified! At this point, there are two rough methods that I am interested to explore and 
+                discuss with my supervisors!
+            </p>
+
+            <div class="work-card">
+                <div class="title">Method 1: Simply using 2011 Population-Weighted MSOA Centroids to City Centre Bus Stops</div>
+
+                <ol>
+                    <li>Load the population-weighted 2011 MSOA centroids for the relevant city region. This will be the <strong>ORIGINS</strong></li>
+                    <li>Load the city centre boundaries</li>
+                    <li>Load the bus stops from NaPTAN and crop it to within the city centre boundaries. This will be the <strong>DESTINATIONS</strong></li>
+                    <li>Initialise network using r5py.TransportNetwork to to include the city region's road network and GTFS data of choice</li>
+                    <li>Run r5py.TravelTimeMatrix with the following parameters:<br>
+                    <ul>
+                        a) Set departure time to 0815 BST, but with a 30-min departure time window (so that arrival times could be between 0845 and 0915 BST as per the CfC report)<br>
+                        b) Set transport mode to only bus <strong>and walking</strong> (will expand to train and trams in the future)<br>
+                        c) Set maximum travel time to 40 mins <strong>and maximum walking time to 10 mins</strong> (this is to measure travel within 30 mins only, can be amended to measure travel within 45 mins)<br>
+                        d) Set maximum public transport rides to only one to exclude interchanging of buses or to other modes, as per the baseline conditions in CfC report
+                    </ul></li>
+                    <li>For each origin with travel time values, get the median travel time to the bus stops in city centre</li>
+                    <li>Filter for population-weighted origins with median travel times less than 30 mins</li>
+                </ol>
+            </div>
+
+            <div class="work-card">
+                <div class="title">Method 2: Generate Median Travel Times between Bus Stops, then Generate Walking Isochrones, then Overlap with 2011 MSOA</div>
+                <ol>
+                    <li>Load the map of relevant city region and its city centre boundaries</li>
+                    <li>Load the bus stops from NaPTAN and crop it to the relevant city region. This will be the <strong>ORIGINS</strong></li>
+                    <li>Use the same bus stops data and crop it to within the city centre boundaries. This will be the <strong>DESTINATIONS</strong></li>
+                    <li>Initialise network using r5py.TransportNetwork to include the city region's road network and GTFS data of choice</li>
+                    <li>Run r5py.TravelTimeMatrix with the following parameters:</li>
+                    <ul>
+                        a) Set departure time to 0815 BST, but with a 30-min departure time window (so that arrival times could be between 0845 and 0915 BST as per the CfC report)<br>
+                        b) Set transport mode to only bus (will expand to train and trams in the future)<br>
+                        c) Set maximum travel time to 40 mins to reduce computational load (this is to measure travel within 30 mins only, can be amended to measure travel within 45 mins)<br>
+                        d) Set maximum public transport rides to only one to exclude interchanging of buses or to other modes, as per the baseline conditions in CfC report
+                    </ul>
+                    <li>For each origin bus stop that has travel time values, get the median travel time to the bus stops in city centre</li>
+                    <li>Filter for origin bus stops with median travel times less than 30 mins</li>
+                    <li>Use r5py.Isochrones from those remaining bus stops to generate walking isochrones with maximum of 10 minutes</li>
+                    <li>Overlay the walking isochrones map over the map of relevant city region with 2011 MSOA boundaries</li>
+                </ol>
+            </div>
+
+            <p class="description">
+                As of now, I have NOT run the code yet. I am expecting Method 1 to be computationally faster than Method 2, but Method 1 may also produce a smaller 
+                coverage than Method 2. I intend to run the steps using Greater Manchester as the example again, and you can see the results 
+                <u>here once the hyperlink is updated</u>.
             </p>
         </div>
 
