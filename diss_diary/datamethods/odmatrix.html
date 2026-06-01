@@ -132,11 +132,15 @@
             <ol>
                 <li>Aggregate the OD data into the Local Authority level and just eyeball the differences. No stats madness needed</li>
                 <li>Pearson's Correlation Coefficient: This will show if the travel patterns exhibited in the potential datasets match the 'gold standard', even if the actual numbers are wildly off</li>
-                <li>Standardised Root Mean Square Error: This will show how far off the actual flows are in the potential datasets from the 'gold standard'</li>
+                <li>Standardised Root Mean Square Error: This will show how far off the actual flows are in the potential datasets from the 'gold standard', by dividing RMSE by mean size of an OD pair flow in the 'gold standard' dataset</li>
             </ol><br>
 
             <p class="description">
-                Very well, here we go! <br><br>
+                This is NOT exactly the same as using R-squared and RMSE values to evaluate a fitted model from the observed values because I have not fitted any model 
+                yet - I am choosing which dataset for my baseline to begin with. Therefore, I would not care much about variance of potential datasets from 2024 TRADS, 
+                I am more interested in whether the potential datasets highlight the same Origin-Destination pair/s as having the same degree of high flows as 2024 
+                TRADS -> using R value instead of R-squared. Additionally, I am not comparing a fitted model that came from the exact base data as the observed, it is 
+                between two differently-generated datasets, thus I need to standardise the RMSE. <br><br>
 
                 <h5>Pre-Processing Steps</h5>
 
@@ -168,17 +172,17 @@
                 <div id="matrixSlideshow">
                     <div class="matrix-slide active">
                         <img src="locomizer.png" alt="Pivot Table from Locomizer November 2021 Mobile Phone Data" class="img-fluid rounded">
-                        <p class="mt-2"><i><strong>Potential #1:</strong> Locomizer Mobile Phone Data</i></p>
+                        <i><strong>Potential #1:</strong> Locomizer Mobile Phone Data</i>
                     </div>
 
                     <div class="matrix-slide">
                         <img src="onsnopandemic.png" alt="Pivot Table from Counterfactual TTW Data assuming Pre-COVID Travel Patterns" class="img-fluid rounded">
-                        <p class="mt-2"><i><strong>Potential #2:</strong> Counterfactual assuming Pre-COVID Travel Patterns</i></p>        
+                        <i><strong>Potential #2:</strong> Counterfactual assuming Pre-COVID Travel Patterns</i>       
                     </div>
 
                     <div class="matrix-slide">
                         <img src="onspandemic.png" alt="Pivot Table from Counterfactual TTW Data assuming During COVID Travel Patterns" class="img-fluid rounded">
-                        <p class="mt-2"><i><strong>Potential #3:</strong> Counterfactual assuming During COVID Travel Patterns</i></p>
+                        <i><strong>Potential #3:</strong> Counterfactual assuming During COVID Travel Patterns</i>
                     </div>
                 </div>
 
@@ -187,11 +191,11 @@
                     <span id="slideCounter" class="text-muted" style="font-size: 0.9rem;">1 / 4</span>
                     <button class="btn btn-outline-secondary btn-sm" onclick="changeSlide(1)">Next &#8594;</button>
                 </div>
-            </div>
+            </div><br>
                 
             <p class="description">
                 Right off the bat, we see that Potential #1 is the worst because after transformation (expanding the data to cover England's population, and then 
-                dividing by 30 days), the flow values are 10 times less than the 'gold standard' or the other two potential datasets...
+                dividing by 30 days), the flow values are like 10 times less than the 'gold standard' or the other two potential datasets...
                 <br><br>
 
                 <h5>Statistical Measures</h5>
@@ -200,7 +204,32 @@
             <div class="col-md-8 mx-auto text-center">
                 <img src="stats.png" alt="Results of " class="img-fluid rounded"><br>
                 <i>Results of Pearson Correlation Coefficient and Standardised RMSE between the 'gold standard' and potential datasets</i>
-            </div>
+            </div><br>
+
+            <p class="description">
+                Overall, the best OD dataset at my disposal as of now is to use 
+                <strong>Potential Dataset #2: The ONS Counterfactual 2021 TTW Data assuming pre-COVID travel patterns</strong>. Having relatively high R values for all 
+                three potential datasets mean that all of them largely correspond with 2024 GM TRADS in identifying similar Origin-Destination LA pair/s as having a lot 
+                of flows. What matters more here is that the Standardised RMSE values for all of them are also quite high. <br><br>
+
+                For example, focusing on Potential Dataset #2 and comparing it with 2024 GM TRADS, both are correct in identifying that intra-district LA flows within 
+                Manchester make up the highest number of flows that originated from Manchester LA (154,940 in 2024 GM TRADS, 77,832 in Potential Dataset #2). However, 
+                the former value is almost double of the latter. That is an extreme case of value divergence, since the mean size of an OD pair flow in 2024 GM TRADS 
+                is about 10,000 (meaning that individual OD pair flows in Potential Dataset #2 is off from the corresponding value in 2024 GM TRADS by about 10,000 on 
+                either side on average). Nevertheless, I am compelled to settle on the Potential Dataset #2 for now because the SRMSE values for the other two potential 
+                datasets are higher. It is important to note that having access to more granular benchmark data (at MSOA level instead of LA level) is almost guaranteed 
+                to produce very different results. It could be better because the aggregation may have introduced compounding errors, but it can also be much worse. 
+                Having access to benchmark data for other English regions could also produce different statistical results. <br><br>
+
+                This limits what I can do for my lines of enquiry in the sense that I cannot consciously report on the current situation or outcomes from potential 
+                improvements in raw numbers alone because they are likely wildly off. However, the high R value statistic for Potential Dataset #2 means that there is 
+                confidence in highlighting which areas of the city could be genuinely underserved because it is a high-demand place that falls within the accessibility 
+                gap or beyond the 30/45-minutes scheduled journeys, and I can still report on improvements from various scenarios by percentages. <br><br>
+
+                Choosing Potential Dataset #2 also means that the administrative boundaries for my dissertation will be based on <strong>2011 MSOA boundaries</strong> 
+                instead of the more recent 2021 boundaries. This is not expected to complicate my lines of enquiry and not change the material issue underpinned by my 
+                research question since I am NOT primarily using working population totals for any of the numbers that I am reporting.
+            </p>
         </div>
 
         <script src="../../script.js"></script>
