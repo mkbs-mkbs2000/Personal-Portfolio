@@ -78,7 +78,7 @@
             <p class="description">
                 Based on <a target="_blank" href="../datamethods/accessibility.html#june1updatemtd">the two methods that I have outlined here</a>, the 
                 scheduled-vs-actual accessibility of OAs to Greater Manchester City Centre by one bus trip during the morning peak hour on September 17, 2025, are shown 
-                in the maps below! The top figure shows the comparison between Methods 1 and 2 when journey time is capped at 30 minutes, while the bottom figure is 
+                in the maps below! The left figure shows the comparison between Methods 1 and 2 when journey time is capped at 30 minutes, while the right figure is 
                 when the journey time is capped at 45 minutes.
             </p>
 
@@ -93,8 +93,8 @@
                     </div>
                     <div class="col">
                         <img-comparison-slider>
-                            <img slot="first" src="june2mtd1.png" class="img-fluid rounded" alt="Method 1">
-                            <img slot="second" src="june2mtd2.png" class="img-fluid rounded" alt="Method 2">
+                            <img slot="first" src="june2mtd1_45.png" class="img-fluid rounded" alt="Method 1">
+                            <img slot="second" src="june2mtd2_45.png" class="img-fluid rounded" alt="Method 2">
                         </img-comparison-slider>
                         <i>Swipe right to see Method 1 results, swipe left to see Method 2 results for <strong>45-minute journeys</strong></i>
                     </div>
@@ -102,7 +102,26 @@
             </div><br>
 
             <p class="description">
-                what is up?
+                Comparing Methods 1 and 2 at the 30-minute threshold, they produce similar coverage areas where workers can have up to a 30-minute median scheduled and 
+                actual journeys to the city centre. However, Method 2 reveals a larger scheduled-vs-actual accessibility gap in the east because ultimately it is NOT 
+                tied to administrative boundaries. It is based on bus stops that fall within the time threshold followed by a walking isochrone expansion, and then 
+                overlaid on MSOA boundaries for illustrative purposes. This gap is hidden by Method 1 because it only uses ONE point - the population-weighted centroid 
+                of each MSOA - as origin. This means that the population-weighted centroids of MSOAs that lie east of city centre are still closer to the city centre, 
+                thus falling within the 30-minute threshold based on actual bus travel times, therefore the whole MSOA is considered as 'within 30-min accessibility by 
+                actual travel times' and the accessibility gap disappears. <br><br>
+
+                Methods 1 and 2 start to diverge when looking at the 45-minute threshold. Notwithstanding that the coverage areas are larger (which should be the case 
+                anyway for a longer time threshold), Method 1 produced not just a scheduled-vs-accesibility gap, but also an accessibility 'black hole' in the east of 
+                city centre, which means that it cannot reach the city centre by 45 minutes even based on scheduled services. This would put them into my third inquiry 
+                line (<a target="_blank" href="../context.html#inquiries">see here</a>"), but this 'black hole' does not exist when looking at Method 2. Additionally, 
+                Method 1 identified MSOAs that could be reached within 45 minutes of scheduled services in the south-west of the city centre, but Method 2 did not go 
+                as far. <br><br>
+
+                At this point, Method 2 seems to produce more realistic results but it is not easily mapped onto MSOAs. On the other hand, Method 1, by using just one 
+                point (the population-weighted centroid) per MSOA as origin to determine the travel time for the whole MSOA to the city centre, makes it easier to bring 
+                in ONS's counterfactual data for the second part of dissertation. At this point, neither Methods are fully suitable on its own. The best solution seems 
+                to be updating Method 2 and incorporating elements from the method used in the 
+                <a target="_blank" href="../datamethods/accessibility.html#may18trialmtd">first quick-and-dirty exercise</a>.
             </p>
         </div>
 
