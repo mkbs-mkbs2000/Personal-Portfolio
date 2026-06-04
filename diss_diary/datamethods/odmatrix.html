@@ -202,7 +202,7 @@
             </p>
 
             <div class="col-md-8 mx-auto text-center">
-                <img src="stats.png" alt="Results of " class="img-fluid rounded"><br>
+                <img src="stats.png" alt="Results of Statistical Measures on Potential Datasets" class="img-fluid rounded"><br>
                 <i>Results of Pearson Correlation Coefficient and Standardised RMSE between the 'gold standard' and potential datasets</i>
             </div><br>
 
@@ -229,6 +229,61 @@
                 Choosing Potential Dataset #2 also means that the administrative boundaries for my dissertation will be based on <strong>2011 MSOA boundaries</strong> 
                 instead of the more recent 2021 boundaries. This is not expected to complicate my lines of enquiry and not change the material issue underpinned by my 
                 research question since I am NOT primarily using working population totals for any of the numbers that I am reporting.
+            </p><br>
+
+            <div class="year-heading" id="june4iwaswrong">June 4, 2026</div>
+            <p class="description">
+                <strong>I got it wrong back on June 1.</strong> Specifically I got two things wrong. <br><br>
+
+                Firstly, on that Pearson R values. The reason why it is all relatively high because it did detect the same high-flow OD pairs between 2024 GM TRADS and 
+                all three potential datasets, and those are mostly the flows into Manchester district, where the city centre for Manchester is located. But those flows 
+                are way too high, it dominated everything else and painted a flattering picture. I should have <strong>log-transformed the flows</strong> so that I can 
+                evaluate the entirety of the datasets, including the smaller flows between the districts, and see if they are in agreement with what was observed in 
+                Greater Manchester in 2024. The rule of thumb is still the same - the higher the R value, the more agreement there is between the datasets, and 
+                therefore the better!<br><br>
+
+                Secondly, the SRMSE values are <i>slightly</i> misleading. Yes, it indicates how far off from 2024 GM TRADS are the flows in the potential datasets. 
+                However, by itself, it does not indicate the pattern of the errors - could the errors be uniform throughout (dataset A flows are all 10,000 off from 
+                2024 GM TRADS flows), or could the errors happen all over the place? To do this, I should have calculated the ratio of potential dataset/GM 2024 TRADS 
+                for each LA-LA flow and then find out the coefficient of variation of those ratios. In summary, 
+                <a target="_blank" href="https://stats.oarc.ucla.edu/other/mult-pkg/faq/general/faq-what-is-the-coefficient-of-variation/">coefficient of variation (CV)</a> 
+                describes the dispersion of a variable in a way that is independent of the variable's unit. In my context, the CV will tell me if differences between 
+                potential datasets and the 'gold standard' are largely consistent across all LA-LA flows or if they are wildly different. The rule of thumb is similar 
+                to SRMSE - the lower the CV value, the more consistent the errors, and therefore the better!<br><br>
+
+                How did I discover these errors? <strong>It was through a conversation with Claude</strong>, where I was asking about the implications of reporting 
+                percentage changes across scenarios instead of raw numbers after doing SIM. Specifically, I was asking if it is possible to feed into the SIM the shares 
+                of travel to city centre instead of the raw counts, and that was when Claude highlighted that it is only possible if the errors in the selected dataset 
+                are consistent across the board. That led to the realisation that I DID NOT KNOW if this was the case, thus I asked what should be done, and therefore 
+                the suggestion to calculate the CV. When I asked further if there was anything that I missed out in my evaluation such as Spearman's rank correlation, 
+                that was when Claude replied that Spearman's is not necessary and I only needed to do Pearson's Correlation Coefficient on logged flows instead of on 
+                the raw flows.
+            </p>
+
+            <div class="col-md-8 mx-auto text-center">
+                <img src="updated_stats.png" alt="Results of Additional Statistical Measures on Potential Datasets" class="img-fluid rounded"><br>
+                <i>Pearson R values on logged flows and CV on error ratio between dataset and 'gold standard' are added to the comparison table</i>
+            </div><br>
+
+            <p class="description">
+                So the above table is the updated comparison table after adding the two additional statistics. The best dataset for me to use turned out to be 
+                <strong>Potential Dataset #1: Locomizer Mobile Phone OD Data from November 2021</strong>. The R value on logged flows, while they are high for all three, 
+                is the highest for Locomizer data. Meanwhile, both ONS counterfactuals actually saw their R values dropped when the flows are logged. That meant that 
+                Locomizer data is in greater agreement with actual sampled post-pandemic travel patterns across Greater Manchester than the ONS counterfactuals. <br><br>
+
+                The CV values also show that the Locomizer dataset is a much better fit than the other two. This is because for all flows, Locomizer's errors are 
+                slightly more consistent than the other two datasets. The statistic is even better when we consider the CV for errors in flows to Manchester district, 
+                where the city centre is - Locomizer data has a CV of 0.3 while ONS counterfactuals' CVs are almost 0.5. Putting this information with the SRMSE values 
+                together paints the following picture - Locomizer dataset is very much wrong in terms of actual numbers (very high SRMSE) but as a whole it does capture 
+                the post-pandemic travel patterns in Greater Manchester more effectively with those fewer counts than the ONS counterfactuals (lower R and CV values)! 
+                This could be attributed to the fact that at the end of the day, Locomizer data is actual observed data from a point in time where society is 
+                functioning closer to 2024 (the period of reduced restrictions in Nov 2021) while the ONS counterfactuals are estimates from past periods (pre-pandemic 
+                or mid-pandemic itself). <br><br>
+
+                The implication actually slightly works in my favour - Locomizer dataset is presented using the current 2021 MSOA boundaries, so that means my 
+                dissertation's geographic unit of analysis is also based on 2021 boundaries. I have already committed since June 1 that I won't be reporting raw counts 
+                to compare the changes between the different scenarios and baseline conditions after doing SIM (what will be reported is percentage changes instead), 
+                so no changes on that front!
             </p>
         </div>
 
