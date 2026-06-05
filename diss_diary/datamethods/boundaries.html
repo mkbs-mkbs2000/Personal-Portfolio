@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Boundaries</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="../../style.css">
+    </head>
+
+    <body class="bg-warning-subtle">
+
+        <nav class="navbar sticky-top navbar-expand-lg bg-danger-subtle">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="../../index.html"><strong>MKBS</strong></a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../past_projects.html"><strong><u>Past Projects</u></strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../secondary_contributions.html"><strong><u>Secondary Contributions</u></strong></a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="../dissertation_diary.html"><strong><u>Dissertation Diary</u></strong></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="container text-center mt-4 mb-4">
+            <h1>Clarifying Boundaries</h1>
+        </div>
+
+        <div class="container mt-4 mb-5">
+            <a type="button" class="btn btn-secondary" href="../datamethods.html">Go back to Data and Methods</a>
+
+            <br><br>
+            
+            <div class="year-heading" id="june5boundaries">June 5, 2026</div>
+            <p class="description">
+                Since I have been flip-flopping on which administrative boundaries that I will be using for my dissertation, I think it is about time that I should 
+                clarify what is going on, now that <a target="_blank" href="odmatrix.html#june4iwaswrong">I have firmed up on the choice of OD data</a>. <br><br>
+
+                <h5>Lowest-Level Administrative Geography</h5>
+                Since the Locomizer dataset provides Origin-Destination pair flows at the 2021 MSOA level, I will be using <strong>2021 MSOA boundaries</strong> for 
+                the base unit of my analysis. This means that when looking at how the commuting patterns will change due to service improvements, it will be based on 
+                changes at 2021 MSOA level. <br><br>
+
+                <h5>City Centre Boundaries</h5>
+                Currently, CfC defined their city centre boundaries based on 
+                <a target="_blank" href="https://www.centreforcities.org/reader/checking-out/">another report published by CfC in 2025</a> which looked at high streets' 
+                economic performance across the UK. Essentially, they used a 
+                <a target="_blank" href="https://data.geods.ac.uk/dataset/retail-centre-boundaries">dataset of retail centre boundaries from Geographic Data Service (GoeDS)</a> 
+                (because city centres are also retail centres) and overlaid it onto <a target="_blank" href="https://apps.cdrc.ac.uk/static/COWZ.pdf">Workplace Zones (WZ)</a>. 
+                They then relied on their 'in-house knowledge of these city centres' to determine which other WZs should be grouped together into the central 
+                business district (and therefore the city centre) for the primary urban area. This is because GeoDS dataset only looks at retail centres, but CBDs also 
+                include offices for tertiary industries. <br><br>
+
+                Herein lies the problem - the CfC's city centre boundaries, as I got them, do not match MSOA boundaries. Looking at 
+                <a target="_blank" href="../results/access_results.html#june2results">Manchester's city centre boundaries alone</a>, they span across four MSOAs. For 
+                the first part of my dissertation that looks at scheduled-vs-actual accessibility, this would not be a problem. It is problematic for the second part 
+                that uses SIM to predict changes in commuting patterns because my OD data is set to MSOA level. <br><br>
+
+                So this is how I intend to resolve it. Firstly, I need to <strong>adjust CfC's city centre boundaries into the 2021 LSOA boundaries</strong>. 
+                The impact is that the city centre boundaries are going to get slightly bigger. This will facilitate the usage of the latest data from
+                <a target="_blank" href="https://www.ons.gov.uk/surveys/informationforbusinesses/businesssurveys/businessregisterandemploymentsurvey">Business Register and Employment Survey</a>, 
+                which the ONS releases at LSOA and MSOA levels. I can then figure out the ratio of jobs within the updated city centre boundaries out of total jobs for 
+                each of the intersecting MSOAs. I can split the OD data accordingly based on that ratio, which would not be an issue for the OD dataset because it 
+                records flows from home to work commutes only, all other commutes have been filtered out. <br><br>
+
+                <strong>I need to put illustration here, I'll update in due time</strong><br><br>
+
+                <h5>Study Area Boundaries</h5>
+                Nottingham and Bristol does not have the same local government structures as Greater Manchester. As a Singaporean, I don't understand how the local 
+                government system works, and I don't intend to. Fortunately, ONS has also published 
+                <a target="_blank" href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/articles/traveltoworkareaanalysisingreatbritain/2016">Travel to Work Areas (TTWAs)</a>, 
+                a geography that approximates labour market areas - essentially people largely live and work within these boundaries, which may not be the same as the 
+                local government boundaries that are <a target="_blank" href="https://en.wikipedia.org/wiki/Upcoming_structural_changes_to_local_government_in_England">about to change a lot more in the next few years</a>, 
+                if a Labour government can remain by 2029. In short, the origin MSOAs when I am doing my r5py analysis and SIM will be based on 
+                <strong>TTWAs for Manchester, Nottingham and Bristol!</strong>
+            </p>
+        </div>
+
+
+        <script src="../../script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    </body>
+</html>
