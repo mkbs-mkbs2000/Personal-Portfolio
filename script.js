@@ -10,13 +10,16 @@ function no() {
   document.getElementById('nomessage').style.display = "block";
 }
 
-// OD Matrix image slideshow
-let currentSlide = 0;
-const slides = document.querySelectorAll('.matrix-slide');
+// Generic slideshow function - pass the slideshow container ID, counter ID, and direction
+function changeSlide(slideshowId, counterId, direction) {
+    const container = document.getElementById(slideshowId);
+    if (!container) return;
+    const slides = container.querySelectorAll('.matrix-slide');
+    const current = container.querySelector('.matrix-slide.active');
+    let currentIndex = Array.from(slides).indexOf(current);
 
-function changeSlide(direction) {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + direction + slides.length) % slides.length;
-    slides[currentSlide].classList.add('active');
-    document.getElementById('slideCounter').textContent = (currentSlide + 1) + ' / ' + slides.length;
+    slides[currentIndex].classList.remove('active');
+    currentIndex = (currentIndex + direction + slides.length) % slides.length;
+    slides[currentIndex].classList.add('active');
+    document.getElementById(counterId).textContent = (currentIndex + 1) + ' / ' + slides.length;
 }

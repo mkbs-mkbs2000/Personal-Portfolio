@@ -74,19 +74,63 @@
                 <a target="_blank" href="https://www.ons.gov.uk/surveys/informationforbusinesses/businesssurveys/businessregisterandemploymentsurvey">Business Register and Employment Survey</a>, 
                 which the ONS releases at LSOA and MSOA levels. I can then figure out the ratio of jobs within the updated city centre boundaries out of total jobs for 
                 each of the intersecting MSOAs. I can split the OD data accordingly based on that ratio, which would not be an issue for the OD dataset because it 
-                records flows from home to work commutes only, all other commutes have been filtered out. <br><br>
+                records flows from home to work commutes only, all other commutes have been filtered out.
+            </p>
 
-                <strong>I need to put illustration here, I'll update in due time</strong><br><br>
+            <div class="col-md-8 mx-auto text-center">
+                <div id="ccSlideshow">
+                    <div class="matrix-slide active">
+                        <img src="manchester_cc.png" alt="CfC's and Adjusted City Centre Boundaries for Manchester" class="img-fluid rounded">
+                    </div>
 
+                    <div class="matrix-slide">
+                        <img src="nottingham_cc.png" alt="CfC's and Adjusted City Centre Boundaries for Nottingham" class="img-fluid rounded">
+                    </div>
+
+                    <div class="matrix-slide">
+                        <img src="bristol_cc.png" alt="CfC's and Adjusted City Centre Boundaries for Bristol" class="img-fluid rounded">
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center align-items-center gap-3 mt-3">
+                    <button class="btn btn-outline-secondary btn-sm" onclick="changeSlide('ccSlideshow', 'ccSlideCounter', -1)">&#8592; Prev</button>
+                    <span id="ccSlideCounter" class="text-muted" style="font-size: 0.9rem;">1 / 3</span>
+                    <button class="btn btn-outline-secondary btn-sm" onclick="changeSlide('ccSlideshow', 'ccSlideCounter', 1)">Next &#8594;</button>
+                </div>
+            </div><br>
+
+            <p class="description">
                 <h5>Study Area Boundaries</h5>
                 Nottingham and Bristol does not have the same local government structures as Greater Manchester. As a Singaporean, I don't understand how the local 
                 government system works, and I don't intend to. Fortunately, ONS has also published 
                 <a target="_blank" href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/articles/traveltoworkareaanalysisingreatbritain/2016">Travel to Work Areas (TTWAs)</a>, 
                 a geography that approximates labour market areas - essentially people largely live and work within these boundaries, which may not be the same as the 
                 local government boundaries that are <a target="_blank" href="https://en.wikipedia.org/wiki/Upcoming_structural_changes_to_local_government_in_England">about to change a lot more in the next few years</a>, 
-                if a Labour government can remain by 2029. In short, the origin MSOAs when I am doing my r5py analysis and SIM will be based on 
-                <strong>TTWAs for Manchester, Nottingham and Bristol!</strong>
+                if a Labour government can remain by 2029. Therefore, in a similar idea as the city centre boundary adjustments above, 
+                <strong>I adjusted TTWA boundaries into 2021 MSOA boundaries, as follows</strong>.
             </p>
+
+            <div class="col-md-8 mx-auto text-center">
+                <div class="d-flex justify-content-center align-items-center gap-3 mt-3">
+                    <button class="btn btn-outline-secondary btn-sm" onclick="changeSlide('areaSlideshow', 'areaSlideCounter', -1)">&#8592; Prev</button>
+                    <span id="areaSlideCounter" class="text-muted" style="font-size: 0.9rem;">1 / 3</span>
+                    <button class="btn btn-outline-secondary btn-sm" onclick="changeSlide('areaSlideshow', 'areaSlideCounter', 1)">Next &#8594;</button>
+                </div><br>
+
+                <div id="areaSlideshow">
+                    <div class="matrix-slide active">
+                        <img src="manchester_area.png" alt="Manchester Study Area" class="img-fluid rounded">
+                    </div>
+
+                    <div class="matrix-slide">
+                        <img src="nottingham_area.png" alt="Nottingham Study Area" class="img-fluid rounded">
+                    </div>
+
+                    <div class="matrix-slide">
+                        <img src="bristol_area.png" alt="Bristol Study Area" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
         </div>
 
 
