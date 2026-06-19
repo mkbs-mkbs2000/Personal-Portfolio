@@ -213,8 +213,86 @@
                 <h6>To what extent does public transport in Manchester, Nottingham and Bristol perpetuate transport injustice by failing to provide workers with 
                     reasonable journey times to city centres due to unreliability and/or inadequate scheduling, and how would the commuting landscape change as 
                     a result of targeted service improvements?</h6>
+            </p><br>
+
+            <div class="year-heading" id="june19impasse">June 19, 2026</div>
+            <p class="description">
+                It is exactly two weeks since I last updated this diary. Officially I am at an impasse. To be honest, after updating the boundaries, I had made a lot of 
+                progress but it was a lot of one-step-forward-two-step-backwards kinda situation. <br><br>
+
+                At first I thought that once I had the boundaries settled and the pipelines to build retrospective GTFS <strong>for buses</strong> ready, all I needed 
+                was to pull in the scheduled GTFS for rail. This is the first roadblock - there's no archive of historical scheduled GTFS for rail anywhere. When I 
+                pulled the rail timetable from Network Rail, that schedule is valid up until May 17, 2026. That's <strong>seven months</strong> after September 17, 
+                2025 - the date that I have been using to <a href="datamethods/accessibility.html" target="_blank">do the quick-and-dirty analysis</a>. So I need to 
+                find another suitable date that falls AFTER May 17 to rebuild the retrospective bus GTFS data in order the to be in sync with the rail GTFS timetable. <br><br>
+
+                Choosing an alternative date is a small issue in my larger scheme of things, so I initially chose June 3 and moved on to the r5py analysis stage to 
+                model travel times based on scheduled and actual service patterns on all three cities of Manchester, Nottingham and Bristol. I had another small 
+                dilemma here because my original method of choosing bus stop-to-bus stop to generate the travel times from each MSOA to city centre turned out to be 
+                extremely time consuming. Using the population centroid at MSOA level was ruled out because a sidetrack experimental run I did in May resulted in 
+                an MSOA in Manchester with no travel time modelled because the centroid happened to be so far off the road network that r5py could not model it. I did 
+                not know why but the solution was quite simple - use population centroid at LSOA level, then generate travel times, then just get the median for the 
+                entire MSOA. Even if one of the LSOA population centroids are not snapped to the road network, the other centroids could provide the values for the MSOA. 
+                Eventually, it is not bus stop-to-bus stop travel times but LSOA centroids-to-bus stop travel times, and it has improved the processing times on Python 
+                by sixfold! <br><br>
+
+                The r5py analysis stage is important because it is the base for the cost matrix for my SIM to predict what happens to commuting patterns to city centre 
+                after different types of service improvements. This is where the third issue came in - what kind of SIM do I use. Initially I thought that since I have 
+                fairly absolute numbers about how many people live in the MSOAs, and how many jobs in the city centre, and since what is being changed is the travel 
+                process and the cost matrices -- the right SIM should have been a doubly-constrained one. However, this is useful if only I have data breakdown of how 
+                many people travel on public transport to work vis-a-vis other transport modes. By virtue of me 
+                <a href="datamethods/odmatrix.html#june4iwaswrong" target="_blank">choosing the Locomizer Nov 2021 Mobile Phone Dataset</a>, I do not have that. So, the 
+                thing that I can observe by 'changes in commuting patterns' through SIM won't be 'how many more people take public transport to work at the city centre 
+                due to the improvements', but rather 'how many more people could be attracted to work in the city centre due to the improvements'. This has changed my 
+                dissertation to a question about job demand/labour force supply and how the poor bus service provision in the three cities may suppress this. That meant 
+                that my suitable SIM should be an origin/production-constrained model, where the total number of outflows from each MSOA remains the same as in the 
+                'baseline' OD data, but the sum of inflows could change. That change is the amount of suppressed demand that could be unlocked due to the improvements. <br><br>
+
+                Now this is where I run into the fourth dilemma. Those of you who would have dealt with SIM before would know that it requires multiple destination. If 
+                you have a production-constrained SIM but only one destination, what exactly would change to the flows even if the cost matrix/destination weights are 
+                amended? That is where I consulted Claude while activating the 'Research' function, which gave me a fairly complicated answer that I still do not 
+                understand till now. What I got was that I am no longer doing a conventional production-constrained SIM, I am doing an accessibility metric of each MSOA 
+                to the city centre because limiting it to one destinations massively simplifies the gravity formula. It suggested that after I calculated this metric, I 
+                should do a proper production-constrained SIM with two to three alternative employment centres in each city <i>for sanity checking</i>. If I'm going to 
+                do a full proper SIM with several alternative destinations anyway, I might as well incorporate it into the original workflow and measure how the 
+                suppressed labour force supply to the city centre could be unlocked in light of the competing destinations in the different improvement scenarios. But 
+                then, how to select the alternative destinations? That put me right back to the drawing board with defining boundaries <i>again</i>. I tentatively 
+                decided to use BRES data and select the top two MSOAs from each city that does not overlap with the city centre as the two alternative destinations and 
+                run the production-constrained SIM accordingly. <br><br>
+
+                That got me into my fifth dilemma, which is where I am right now. With the retrospective and scheduled GTFS datasets on buses (coupled with the 
+                scheduled GTFS datasets on trams and rail), I can generate the actual median travel times, with the baseline criteria of only using one public 
+                transport journey, and use it to calibrate the SIM. I can then swap out the cost matrix with median travel times based on scheduled datasets (what if 
+                the buses actually run on time, how much of the suppressed supply could be unlocked), and based on allowing for multimodal journeys (what if I can 
+                take the bus AND train because the ticketing is integrated, using the scheduled rail GTFS and retrospective bus GTFS together). But what about the other 
+                two scenarios that CfC has explored in their paper?
             </p>
 
+            <ol>
+                <li>
+                    Reduced travel times based on a 15% reduction in <strong>bus</strong> journeys - this is ultimately similar to 'what if the buses run on time', but 
+                    this is still conceptually separate and could provide valuable information on how to improve their bus provision in the most efficient manner. The 
+                    thing is, I cannot just multiply the baseline cost matrix by 0.85 because the baseline cost matrix generated by r5py includes walking egress 
+                    (journey from that population centroid to the nearest bus stop/s). If I just did a wholesale multiplication of the baseline cost matrix by 0.85, it 
+                    would also shorten the time taken to do the walking, which does not happen and does not make sense.
+                </li><br>
+                <li>
+                    Increased bus frequencies, from those with at least two buses per hour to four buses per hour. I would need to massively edit the retrospective GTFS 
+                    schedule and re-run r5py analysis to get the cost matrix to model this scenario in SIM. I cannot just edit the scheduled GTFS data because it would 
+                    compound with the benefits of 'what if the buses run on time' scenario. Also, do I add in the frequencies for buses serving the entire city area or 
+                    for buses only heading to/crossing through the city centre? Sometimes, some routes already have partial services active during the peak hours, so 
+                    the same bus route has different frequencies depending on where you start the journey - so should this route's frequency be considered at its most 
+                    frequent point or its least frequent point, and do we evenly add frequency throughout the entire service or do we just boost frequency at the 
+                    infrequent parts of the route?
+                </li>
+            </ol><br>
+
+            <p class="description">
+                Basically, I am at the point where the large theoretical steps are in place. And the base codes are somewhat ready. But there are several methodological 
+                decisions that I need to make, especially with the third, fourth and fifth dilemmas, that needs to be supported by literature. I have, at this point, 
+                exhausted all the things I could possibly do WITHOUT doing a proper literature review. Now I need to face the demon that I have been delaying for so 
+                long, and I need to do the boring part of reading through everything...
+            </p>
         </div>
 
         <script src="../script.js"></script>
