@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Parallel Research</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="../../style.css">
+    </head>
+
+    <body class="bg-warning-subtle">
+
+        <nav class="navbar sticky-top navbar-expand-lg bg-danger-subtle">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="../../index.html"><strong>MKBS</strong></a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../past_projects.html"><strong><u>Past Projects</u></strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../secondary_contributions.html"><strong><u>Secondary Contributions</u></strong></a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="../dissertation_diary.html"><strong><u>Dissertation Diary</u></strong></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="container text-center mt-4 mb-4">
+            <h1>Parallel Research</h1>
+            Since there's three parts to my methodology, I may or may not further segment this page into three subpages (about retrospective GTFS generation, 
+            time travel modelling with r5py and spatial interaction modelling) in the future.
+        </div>
+
+        <div class="container mt-4 mb-5">
+            <a type="button" class="btn btn-secondary" href="../literature.html">Go back to Literature</a>
+
+            <br><br>
+            
+            <div class="year-heading" id="june19parallel">June 19, 2026</div>
+            <p class="description">
+                <a target="_blank" href="https://doi.org/10.1007/s10109-026-00490-x"><h5>Assessing public transport infrastructure: The role of employment matching in spatial accessibility measures</h5></a>
+                <strong><u>What Is It About</u></strong>: It is a paper that addresses how we define accessibility from a place to job opportunities. It contended that prior research 
+                use a broad definition of accessibility to jobs by assuming that everyone is eligible for every job everywhere. So the researchers decided to compare 
+                between this broad definition of job accessibility (how easy for people in this place to get to jobs in general) and a narrower definition where the job 
+                accessibility is bounded by the educational levels of population at origins and suitable types of employment at destinations (how easy for people in 
+                this place to get to jobs that they are eligible for) at different geographical units (introducing MAUP into the research). <br><br>
+                <strong><u>How Is It Useful</u></strong>: Not that useful, ngl. I was highlighted by Claude that this paper uses SIM, but it is quite limited in the sense that 
+                it uses a doubly-constrained SIM to define the cost function, which in turn is used in the accessibility formula - the core thing that the research is 
+                about. However, their accessibility formula is essentially the sum of all destination weights multiplied by the cost function. I could flip this around 
+                to find the accessibility of a place by people from everywhere else -- the sum of all origin weights multiplied by the cost function -- and this could 
+                be the 'accessibility metric' that <a href="../context.html#june19impasse">Claude may have been suggesting to me</a> all along... but I need to find 
+                more papers that does this 'accessibility metric' the other way around.
+                <br><br><br>
+
+                <a target="_blank" href="https://doi.org/10.1038/s41597-023-02890-w"><h5>Public transport accessibility indicators to urban and regional services in Great Britain</h5></a>
+                <strong><u>What Is It About</u></strong>: It is a paper that documents HOW they created the travel time matrices between all LSOAs/Data Zone (DZ) in 
+                England, Wales and Scotland using scheduled GTFS data, and then crunching out the numbers on how many urban/regional services are within several journey 
+                thresholds from each origin LSOA/DZ. They intend for this to lower the barriers for other researchers, especially those outside of the transport field 
+                who may not be familiar with public transport timetabling standards or coding, to look into accessibility at a granular level across Great Britain. <br><br>
+                <strong><u>How Is It Useful</u></strong>: Also not immediately useful, apart from the fact that they developed the travel time matrices at LSOA-to-LSOA 
+                journeys using LSOA population centroids as both origins and destinations. Considering how 
+                <a href="../datamethods/boundaries.html#june5boundaries">I have snapped the city centre boundaries the LSOA</a>, and how I decided to 
+                <a href="../context.html#june19impasse">set origins to LSOA population centroids</a>, I have further justification to cut down on processing time on 
+                r5py by setting BOTH origins AND destinations based on the LSOA population centroids before getting the median travel time from MSOAs to the city 
+                centres. However, I am cognisant that it introduces walking egresses before AND after the public transport leg/s, and I need to ensure that r5py only 
+                models 'reasonable journeys' -- the walking time does not exceed 10/16 minutes based on the public transport stop that one go to/came from.
+                <br><br><br>
+
+                <a target="_blank" href="https://arxiv.org/html/2603.11477v2"><h5>rt2gtfs: A scalable framework for correcting public transport timetables using real-time data for accessibility analysis</h5></a>
+                <strong><u>What Is It About</u></strong>: It is a paper that documents HOW they created a different way to generate retrospective GTFS data from GTFS-RT 
+                that is released by UK BODS, slightly different from Open Innovation's code and how 
+                <a href="../datamethods/livelocation.html#may17liveloc">I have adapted it</a> so far. Unlike Open Innovations, which did not provide much in way of 
+                technical report and citations informing about the principles behind their code (which is fair, they are not an academic outfit, they are a think-tank), 
+                this paper defended their method by adapting it from 
+                <a href="http://dx.doi.org/10.1016/j.jtrangeo.2017.04.012">Wessel et al. (2017)</a>. That is a paper that I am well aware of since my undergrad because 
+                one of the co-authors is none other than Jeff Allen, my direct supervisor back in UofT School of Cities &#129315;, and there were initial plans of 
+                wanting to map out the actual-vs-scheduled accessibility of public transport in Toronto back when I was still working there, but it was a side project... <br><br>
+                <strong><u>How Is It Useful</u></strong>: Very useful, the researchers actually put up a 
+                <a href="https://github.com/kevinwinsper/rt2gtfs/tree/main">public GitHub repository</a> where I can use the code. As of now, there are two main ways in 
+                which this code is different from <a href="https://github.com/open-innovations/bus-tracking">Open Innovations' code</a>. Firstly, this code ONLY uses 
+                real-time trip_id data that can be matched with scheduled trip_id data, reducing code complexity and running processes. However, to reduce excessive 
+                data filtering, they do require a week's worth of scheduled GTFS data to facilitate that trip_id matching instead of just the day that corresponds with 
+                the GTFS-RT data. At this point, I am inclined to switch over to using this code instead of Open Innovations' code because this code is accompanied by 
+                a full technical report. Further changes to how I eventually generate the retrospective GTFS will be updated 
+                <a href="../datamethods/livelocation.html">at this page</a>! Additionally, this also introduced the concepts of 'Travel Time Inaccuracy', 'Travel Time 
+                Uncertainty' and 'Travel Time Variability', which is important at the conceptual level.
+            </p>
+        </div>
+
+        <script src="../../script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    </body>
+</html>
