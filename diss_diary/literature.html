@@ -52,11 +52,11 @@
                 <li>
                     <strong>Foundational Knowledge</strong>: This is should be about the core concepts/themes of my dissertation. I can quote papers without needing to do 
                     much critical analysis, unless if my dissertation aims to challenge the core itself.
-                </li>
+                </li><br>
                 <li>
                     <strong>Establishing Gaps</strong>: This is where I quote the papers because I am poking holes at their methods/arguments/results. My dissertation 
                     should roughly be about 'why this paper/these papers is/are wrong/incomplete'
-                </li>
+                </li><br>
                 <li>
                     <strong>Parallel Research</strong>: This could be the same papers I use to establish gaps, it could be different. But the point of papers in this 
                     category is to provide justification for the methods that I end up using in my dissertation
@@ -64,7 +64,7 @@
             </ol>
 
             <div class="col-md-8 mx-auto text-center">
-                <img src="literature/lit-review-pyramid.png" alt="Pyramid " class="img-fluid rounded">
+                <img src="../data/lit-review-pyramid.png" alt="Pyramid" class="img-fluid rounded">
                 <i>One of the slides that Clara shared with us to explain about the different kinds of information to look out for when doing a literature review</i>
             </div><br> 
 
@@ -74,34 +74,138 @@
                 Additionally, I have not developed a full and thorough case for shifting the debate about accessibility to one based on OD data and predicted demand 
                 from SIM instead of just 'total number of people/total number of opportunities accessibile' -- this would be about <strong>Establishing Gaps</strong>. 
                 Lastly, I need to build a case on whether I should frame my dissertation as a matter of 'injustice' or just 'inequality', which I can do if I go for 
-                papers that can inform me about <strong>Foundational Knowledge</strong>
+                papers that can inform me about <strong>Foundational Knowledge</strong>. <br><br>
+
+                I would have wanted to separate into different subpages for each of the three information kinds and summarise each literature that falls into each 
+                category, but after four days of plowing through some of the literature, I felt that a lot of the sources overlap in the information type that they 
+                provide, espectially between 'Establishing Gaps' and 'Parallel Research'. So I am going to have just one long page of literature summaries here with 
+                a table listing down how I roughly classify each source, while the implications on my project will be summarised in the 
+                <a href="context.html">Context page</a> instead.
             </p>
 
-            <div class="work-card">
-                <div class="title">
-                    <a href="literature/foundational.html">Foundational Knowledge</a>
+            <div class="container text-center">
+                <h4><u>Classification of Literature</u></h4>
+                <p><i>Click on any of the titles below to get the summary. Links to the original articles are also provided!</i></p>
+                <div class="row">
+                    <div class="col">
+                        <h5>Foundational Knowledge</h5>
+                        <a href="#reading6">Accessibility and transport appraisal: Approaches and limitations (OECD Discussion Paper)</a>
+                    </div>
+                    <div class="col">
+                        <h5>Establishing Gaps</h5>
+                        <a href="#reading1">Assessing public transport infrastructure: The role of employment matching in spatial accessibility measures</a><br><br>
+                        <a href="#reading4">Future accessibility impacts of transport policy scenarios: Equity and sensitivity to travel time thresholds for Bus Rapid Transit expansion in Rio de Janeiro</a>
+                    </div>
+                    <div class="col">
+                        <h5>Parallel Research</h5>
+                        <a href="#reading2">Public transport accessibility indicators to urban and regional services in Great Britain</a><br><br>
+                        <a href="#reading3">rt2gtfs: A scalable framework for correcting public transport timetables using real-time data for accessibility analysis</a><br><br>
+                        <a href="#reading5">Simulating the effect of stratgeies to increase transit ridership by reallocating bus service: Two case studies</a>
+                    </div>
                 </div>
-                <p class="description">Papers about Transport Justice and Inequality, and about the Basics of Spatial Interaction Modelling</p>
-            </div>
+            </div><br>
 
-            <div class="work-card">
-                <div class="title">
-                    <a href="literature/gaps.html">Establishing Gaps</a>
-                </div>
-                <p class="description">Papers about Applications of Transport Justice and Inequality, mostly centred about the Access to Jobs but could be about Access to other Facilities/Infrastructure</p>
-            </div>
+            <div class="year-heading">June 19, 2026</div>
+            <p class="description">
+                <h5 id="reading1">Assessing public transport infrastructure: The role of employment matching in spatial accessibility measures (<a target="_blank" href="https://doi.org/10.1007/s10109-026-00490-x">Link</a>)</h5>
+                <strong><u>What Is It About</u></strong>: It is a paper that addresses how we define accessibility from a place to job opportunities. It contended that prior research 
+                use a broad definition of accessibility to jobs by assuming that everyone is eligible for every job everywhere. So the researchers decided to compare 
+                between this broad definition of job accessibility (how easy for people in this place to get to jobs in general) and a narrower definition where the job 
+                accessibility is bounded by the educational levels of population at origins and suitable types of employment at destinations (how easy for people in 
+                this place to get to jobs that they are eligible for) at different geographical units (introducing MAUP into the research). <br><br>
 
-            <div class="work-card">
-                <div class="title">
-                    <a href="literature/parallel.html">Parallel Research</a>
-                </div>
-                <p class="description">Papers that I will use to inform and/or justify my methods. This may be collapsed with 'Establishing Gaps' if a lot of the papers that are useful for me to refer to are also papers that I can criticise</p>
-            </div>
+                <strong><u>My Takeaways</u></strong>: I was highlighted by Claude that this paper uses SIM, but it is quite limited in the sense that it uses a 
+                doubly-constrained SIM to define the cost function, which in turn is used in the accessibility formula - the core thing that the research is about. 
+                However, their accessibility formula is essentially the sum of all destination weights multiplied by the cost function. I could flip this around to find 
+                the accessibility of a place by people from everywhere else -- the sum of all origin weights multiplied by the cost function -- and this could be the 
+                'accessibility metric' that <a href="context.html#june19impasse">Claude may have been suggesting to me</a> all along (I'm still not sure HAHAH)... but I 
+                need to find more papers that does this 'accessibility metric' the other way around.
+                <br><br><br>
+
+
+                <h5 id="reading2">Public transport accessibility indicators to urban and regional services in Great Britain (<a target="_blank" href="https://doi.org/10.1038/s41597-023-02890-w">Link</a>)</h5>
+                <strong><u>What Is It About</u></strong>: It is a paper that documents HOW they created the travel time matrices between all LSOAs/Data Zone (DZ) in 
+                England, Wales and Scotland using scheduled GTFS data, and then crunching out the numbers on how many urban/regional services are within several journey 
+                thresholds from each origin LSOA/DZ. They intend for this to lower the barriers for other researchers, especially those outside of the transport field 
+                who may not be familiar with public transport timetabling standards or coding, to look into accessibility at a granular level across Great Britain. <br><br>
+
+                <strong><u>My Takeaways</u></strong>: Considering how 
+                <a href="datamethods/boundaries.html#june5boundaries">I have snapped the city centre boundaries the LSOA</a>, and how I decided to 
+                <a href="context.html#june19impasse">set origins to LSOA population centroids</a>, I have further justification to cut down on processing time on 
+                r5py by setting BOTH origins AND destinations based on the LSOA population centroids before getting the median travel time from MSOAs to the city 
+                centres. However, I am cognisant that it introduces walking egresses before AND after the public transport leg/s, and I need to ensure that r5py only 
+                models 'reasonable journeys' -- the walking time does not exceed 10/16 minutes based on the public transport stop that one go to/came from.
+                <br><br><br>
+
+
+                <h5 id="reading3">rt2gtfs: A scalable framework for correcting public transport timetables using real-time data for accessibility analysis (<a target="_blank" href="https://arxiv.org/html/2603.11477v2">Link</a>)</h5>
+                <strong><u>What Is It About</u></strong>: It is a paper that documents HOW they created a different way to generate retrospective GTFS data from GTFS-RT 
+                that is released by UK BODS, slightly different from Open Innovation's code and how 
+                <a href="datamethods/livelocation.html#may17liveloc">I have adapted it</a> so far. Unlike Open Innovations, which did not provide much in way of 
+                technical report and citations informing about the principles behind their code (which is fair, they are not an academic outfit, they are a think-tank), 
+                this paper defended their method by adapting it from 
+                <a href="http://dx.doi.org/10.1016/j.jtrangeo.2017.04.012">Wessel et al. (2017)</a>. That is a paper that I am well aware of since my undergrad because 
+                one of the co-authors is none other than Jeff Allen, my direct supervisor back in UofT School of Cities &#129315;, and there were initial plans of 
+                wanting to map out the actual-vs-scheduled accessibility of public transport in Toronto back when I was still working there, but it was a side project... <br><br>
+                
+                <strong><u>My Takeaways</u></strong>: Very useful, the researchers actually put up a 
+                <a href="https://github.com/kevinwinsper/rt2gtfs/tree/main">public GitHub repository</a> where I can use the code. As of now, there are two main ways in 
+                which this code is different from <a href="https://github.com/open-innovations/bus-tracking">Open Innovations' code</a>. Firstly, this code ONLY uses 
+                real-time trip_id data that can be matched with scheduled trip_id data, reducing code complexity and running processes. However, to reduce excessive 
+                data filtering, they do require a week's worth of scheduled GTFS data to facilitate that trip_id matching instead of just the day that corresponds with 
+                the GTFS-RT data. At this point, I am inclined to switch over to using this code instead of Open Innovations' code because this code is accompanied by 
+                a full technical report. Further changes to how I eventually generate the retrospective GTFS will be updated 
+                <a href="datamethods/livelocation.html">at this page</a>! Additionally, this also introduced the concepts of 'Travel Time Inaccuracy', 'Travel Time 
+                Uncertainty' and 'Travel Time Variability', which is important at the conceptual level.
+            </p><br>
+
+            <div class="year-heading" id="jun23lit">June 23, 2026</div>
+            <p class="description">
+                <h5 id="reading4">Future accessibility impacts of transport policy scenarios: Equity and sensitivity to travel time thresholds for Bus Rapid Transit expansion in Rio de Janeiro (<a href="https://doi.org/10.1016/j.jtrangeo.2018.12.005">Link</a>)</h5>
+                <strong><u>What Is It About</u></strong>: It is a paper that assesses the potential accessibility impacts to jobs across Rio de Janeiro if the BRT 
+                expansion projects -- initially planned for Rio 2026 Olympics but did not complete in time -- were to come to fruition, either fully or partially. It 
+                relies on official documents on the planned BRT routes (and also which redundant bus services would be cut once BRT is operational) to modify scheduled 
+                GTFS data in order to simulate the impacts of partial or full BRT implementation on job accessibility. It measures job accessibility based on 'cumulative 
+                opportunity measures' -- how many jobs are available within the area that one could travel within a threshold time. They tested multiple thresholds 
+                in order to see how the metric changes. <br><br>
+
+                <strong><u>My Takeaways</u></strong>: Two main takeaways that I got. Firstly, it indicated from official documents that when the BRT services are in 
+                operation, redundant services would be cut. It is indicative of how some transport operators make the tradeoff of forgoing some services to accommodate 
+                new ones. Hence, for my dissertation, if I want to have a realistic implementation of 'increasing bus frequency' scenario, I also need to factor in how 
+                other services may need to be cut. (But we will think about it later...) Second takeaway is that this paper is upfront that it uses cumulative 
+                opportunity measures as their metric, which they acknowledged that, while simple, it is not the most realistic situation (all job opportunities are 
+                treated as equally desirable, does not account for actual travel patterns) and also dependent on the threshold selected for time travel. I can make it 
+                clear that I avoid their pitfalls when I do SIM to model the various improvement scenarios because it accounts for where people actually go for work and 
+                that it is threshold-independent. <br><br><br>
+
+
+                <h5 id="reading5">Simulating the effect of stratgeies to increase transit ridership by reallocating bus service: Two case studies (<a href="https://doi.org/10.1016/j.jpubtr.2023.100080">Link</a>)</h5>
+                <strong><u>What Is It About</u></strong>: This is actually an agent-based modelling paper that is used to model how commuting patterns change in two 
+                US cities based on three scenarios -- 1) what if bus frequencies to low-income areas are increased, 2) what if bus frequencies to high ridership areas 
+                are increased, 3) what if we do scenario 2 PLUS reduced travel times from exclusive bus lane implementation. <br><br>
+
+                <strong><u>My Takeaways</u></strong>: What is interesting is that they made it clear that they wanted to maintain the total vehicle revenue miles (VRM) 
+                constant. So increasing frequencies for scenarios 1 and 2 resulted in reduced frequencies for every other route, but only up to the level that would 
+                keep VRM the same. I could consider doing this when exploring more realistic scenarios of increasing frequencies for my dissertation (see my takeaway on 
+                <a href="#reading4">this reading</a>), including the cutting of bus frequencies elsewhere, but I am cognisant that this would dramatically increase the 
+                complexity of my project, so we shall see! I am also motivated to find for articles that discusses the role of VRM in public transport operations -- is 
+                it a big factor of operational costs of running buses, and is this a factor just for the US or in the UK too? <br><br><br>
+
+
+                <h5 id="reading6">Accessibility and transport appraisal: Approaches and limitations (<a href="https://doi.org/10.1787/58a96ff1-en">Link</a>)</h5>
+                <strong><u>What Is It About</u></strong>: It is a working paper that reviews how researchers have measured accessibility and conducted transport appraisal 
+                studies. It covers at length about the different metrics that researchers have used, which, while can be summarised into the four categories that the 
+                paper used, can also be summarised into four other types -- general catch-all accessibility, accessibility assuming competing destinations, accessibility 
+                weighted by travel time, and welfare utility as understood in economics. <br><br>
+
+                <strong><u>My Takeaways</u></strong>: By virtue of how I started this project, the accessibility metrics most relevant to me would be the accessibility 
+                weighted by travel time, but flipping it instead to look at potential accessibility to a destination instead of potential accessibility from an origin 
+                (this is what <a href="#reading1">this reading</a> did). I also find this reading to have useful criticisms about the limitation of current appraisal 
+                methods, chiefly that it is very short term and not as all-encompassing as a proper Land Use-Transport Interaction (LUTI) model. This same criticism will 
+                also apply to my dissertation! <br><br><br>
+            </p>
 
             <p class="description">
-                I should also use this as a base to include citations that are NOT references (the datasets, r5py) so that i do not miss out on any of them when writing 
-                my paper proper. I will update this section in due time! <br><br>
-
                 Meanwhile, the following are the list of things that I have found but have not read so I need to read and then decide if it is useful or not for the 
                 literature review!
             </p>
@@ -123,10 +227,9 @@
                 <li><a href="https://doi.org/10.1016/j.tra.2011.11.013">Understanding the impacts of a combination of service improvement strategies on bus running time and passenger's perception</a></li>
                 <li><a href="https://doi.org/10.1016/j.trpro.2024.12.166">Using GTFS-data to calculate the roadwork caused delays on public transport network</a></li>
                 <li><a href="https://doi.org/10.1038/s41598-024-74960-x">Signals, tracks, and trams: Public transport signal priority impact on job accessibility over time</a></li>
-                <li><a href="https://doi.org/10.1016/j.jtrangeo.2018.12.005">Future accessibility impacts of transport policy scenarios: Equity and sensitivity to travel time thresholds for Bus Rapid Transit expansion in Rio de Janeiro</a></li>
                 <li><a href="https://doi.org/10.1177/03611981211009226">Using GTFS to calculate travel time savings potential of bus preferential treatments</a></li>
                 <li><a href="https://arxiv.org/html/2509.22223">Metro 3 in Brussels under undertainty: Scenario-based public transport accessibility analysis</a></li>
-                <li><a href="https://doi.org/10.5198/jtlu.2018.1074">Accounting for uncertainty and variation in accessibility metrics fro public transport sketch planning</a></li>
+                <li><a href="https://doi.org/10.5198/jtlu.2018.1074">Accounting for uncertainty and variation in accessibility metrics fro public transport sketch planning</a></li><br><br>
             </ul>
         </div>
 
