@@ -79,29 +79,41 @@
                 I would have wanted to separate into different subpages for each of the three information kinds and summarise each literature that falls into each 
                 category, but after four days of plowing through some of the literature, I felt that a lot of the sources overlap in the information type that they 
                 provide, espectially between 'Establishing Gaps' and 'Parallel Research'. So I am going to have just one long page of literature summaries here with 
-                a table listing down how I roughly classify each source, while the implications on my project will be summarised in the 
-                <a href="context.html">Context page</a> instead.
+                a table listing down how I roughly classified each source, while the implications on my project will be summarised instead in the relevant pages of my diary.
             </p>
 
             <div class="container text-center">
                 <h4><u>Classification of Literature</u></h4>
-                <p><i>Click on any of the titles below to get the summary. Links to the original articles are also provided!</i></p>
+                <p>
+                    <i>
+                        Click on any of the titles below to get to its summary.<br> 
+                        Starred articles mean that they are not summarised, instead they are referred to in the summaries for other articles - so the hyperlink would 
+                        bring you to the summary in which it was invoked.
+                    </i>
+                </p>
+                
                 <div class="row">
                     <div class="col">
                         <h5>Foundational Knowledge</h5>
+                        <a href="#reading3">Constructing a routable retrospective transit timetable from a real-time vehicle location feed and GTFS*</a><br><br>
                         <a href="#reading6">Accessibility and transport appraisal: Approaches and limitations</a><br><br>
-                        <a href="#reading7">A family of accessibility measures derived from spatial interaction principles</a>
+                        <a href="#reading7">A family of accessibility measures derived from spatial interaction principles</a><br><br>
+                        <a href="#reading9">Accounting for uncertainty and variation in accessibility metrics for public transport sketch planning</a><br><br>
+                        <a href="#reading10">Comparing two dependent groups via quantiles*</a>
                     </div>
                     <div class="col">
                         <h5>Establishing Gaps</h5>
                         <a href="#reading1">Assessing public transport infrastructure: The role of employment matching in spatial accessibility measures</a><br><br>
-                        <a href="#reading4">Future accessibility impacts of transport policy scenarios: Equity and sensitivity to travel time thresholds for Bus Rapid Transit expansion in Rio de Janeiro</a>
+                        <a href="#reading4">Future accessibility impacts of transport policy scenarios: Equity and sensitivity to travel time thresholds for Bus Rapid Transit expansion in Rio de Janeiro</a><br><br>
+                        <a href="#reading8">Evaluating the impact of public transport travel time inaccuracy and variability on socio-spatial inequalities in accessibility</a>
                     </div>
                     <div class="col">
                         <h5>Parallel Research</h5>
                         <a href="#reading2">Public transport accessibility indicators to urban and regional services in Great Britain</a><br><br>
                         <a href="#reading3">rt2gtfs: A scalable framework for correcting public transport timetables using real-time data for accessibility analysis</a><br><br>
-                        <a href="#reading5">Simulating the effect of stratgeies to increase transit ridership by reallocating bus service: Two case studies</a>
+                        <a href="#reading5">Simulating the effect of stratgeies to increase transit ridership by reallocating bus service: Two case studies</a><br><br>
+                        <a href="#reading7">Measuring the destination accessibility of cycling transfer trips in metro station areas: A big data approach*</a><br><br>
+                        <a href="#reading10">Metro 3 in Brussels under uncertainty: Scenario-based public transport accessibility analysis</a>
                     </div>
                 </div>
             </div><br>
@@ -144,10 +156,11 @@
                 that is released by UK BODS, slightly different from Open Innovation's code and how 
                 <a href="datamethods/livelocation.html#may17liveloc">I have adapted it</a> so far. Unlike Open Innovations, which did not provide much in way of 
                 technical report and citations informing about the principles behind their code (which is fair, they are not an academic outfit, they are a think-tank), 
-                this paper defended their method by adapting it from 
-                <a href="http://dx.doi.org/10.1016/j.jtrangeo.2017.04.012">Wessel et al. (2017)</a>. That is a paper that I am well aware of since my undergrad because 
-                one of the co-authors is none other than Jeff Allen, my direct supervisor back in UofT School of Cities &#129315;, and there were initial plans of 
-                wanting to map out the actual-vs-scheduled accessibility of public transport in Toronto back when I was still working there, but it was a side project... <br><br>
+                this paper defended their method of doing trip-level correction by adapting it from 
+                <a href="http://dx.doi.org/10.1016/j.jtrangeo.2017.04.012">Wessel et al. (2017)</a>. Essentially, they track each vehicle's location (which corresponds 
+                to one trip for that route) over every GTFS-RT call and measures the distance between it and the nearest bus stop on its route. The time when that 
+                vehicle is closest to a stop shall be recorded as the arrival and departure times for that stop --> this can be updated in the stop_times.txt file, one 
+                of the core files within a GTFS dataset. The paper is clear that they are not taking into account stop dwell times. <br><br>
                 
                 <strong><u>My Takeaways</u></strong>: Very useful, the researchers actually put up a 
                 <a href="https://github.com/kevinwinsper/rt2gtfs/tree/main">public GitHub repository</a> where I can use the code. As of now, there are two main ways in 
@@ -156,9 +169,24 @@
                 data filtering, they do require a week's worth of scheduled GTFS data to facilitate that trip_id matching instead of just the day that corresponds with 
                 the GTFS-RT data. At this point, I am inclined to switch over to using this code instead of Open Innovations' code because this code is accompanied by 
                 a full technical report. Further changes to how I eventually generate the retrospective GTFS will be updated 
-                <a href="datamethods/livelocation.html">at this page</a>! Additionally, this also introduced the concepts of 'Travel Time Inaccuracy', 'Travel Time 
-                Uncertainty' and 'Travel Time Variability', which is important at the conceptual level.
-            </p><br>
+                <a href="datamethods/livelocation.html">at this page</a>! Additionally, this also introduced the concepts of 'Travel Time Variability', 'Travel Time 
+                Inaccuracy', 'Travel Time Uncertainty' and 'Travel Time Reliability', defined below, which I may be interested to touch in my dissertation.
+            </p>
+
+            <ul>
+                <li>
+                    <strong>Travel Time Variability (TTV)</strong>: Travel time from point A to point B varies by day, by time of day, and by mode of transport
+                </li><br>
+                <li>
+                    <strong>Travel Time Inaccuracy (TTI)</strong>: Actual vs Scheduled deviations in travel time from point A to point B -- this is the main metric that I want to focus on!
+                </li><br>
+                <li>
+                    <strong>Travel Time Uncertainty (TTU)</strong>: A form of TTV that is due to factors that commuters could not anticipate (a major accident on the road, a protest blocking the road)
+                </li><br>
+                <li>
+                    <strong>Travel Time Reliability (TTR)</strong>: The probability that travel from point A to point B will be performed 'adequately' and completed within a 'reasonable' time -- a fairly arbitrary definition that varies by jusridiction
+                </li>
+            </ul><br>
 
             <div class="year-heading" id="jun23lit">June 23, 2026</div>
             <p class="description">
@@ -167,8 +195,8 @@
                 expansion projects -- initially planned for Rio 2026 Olympics but did not complete in time -- were to come to fruition, either fully or partially. It 
                 relies on official documents on the planned BRT routes (and also which redundant bus services would be cut once BRT is operational) to modify scheduled 
                 GTFS data in order to simulate the impacts of partial or full BRT implementation on job accessibility. It measures job accessibility based on 'cumulative 
-                opportunity measures' -- how many jobs are available within the area that one could travel within a threshold time. They tested multiple thresholds 
-                in order to see how the metric changes. <br><br>
+                opportunity measures' -- how many jobs are available within the area that one could travel within a threshold time. Due to the Modifiable Temporal Unit 
+                Problem (MTUP), they tested multiple thresholds in order to see how the metric changes. <br><br>
 
                 <strong><u>My Takeaways</u></strong>: Two main takeaways that I got. Firstly, it indicated from official documents that when the BRT services are in 
                 operation, redundant services would be cut. It is indicative of how some transport operators make the tradeoff of forgoing some services to accommodate 
@@ -196,7 +224,7 @@
                 <h5 id="reading6">Accessibility and transport appraisal: Approaches and limitations (<a href="https://doi.org/10.1787/58a96ff1-en">Link</a>)</h5>
                 <strong><u>What Is It About</u></strong>: It is a working paper that reviews how researchers have measured accessibility and conducted transport appraisal 
                 studies. It covers at length about the different metrics that researchers have used, which, while can be summarised into the four categories that the 
-                paper used, can also be summarised into four other types -- general catch-all accessibility, accessibility assuming competing destinations, accessibility 
+                paper used, can also be summarised into four other types -- accessibility at threshold time, accessibility assuming competing destinations, accessibility 
                 weighted by travel time, and welfare utility as understood in economics. <br><br>
 
                 <strong><u>My Takeaways</u></strong>: By virtue of how I started this project, the accessibility metrics most relevant to me would be the accessibility 
@@ -218,7 +246,59 @@
                 <a href="https://doi.org/10.3390/ijerph16152641">this article</a> too), so I can justify reporting that "destination-potential accessibility to city 
                 centre has improved by XX% based on this scenario". Nevertheless, I can also highlight in the discussion section that in the future, with presence of 
                 better OD data, one can use these new accessibility metrics to provide more interpretable numbers to policymakers/transport planners about how each 
-                transport improvement scenario affects accessibility from/to a certain area/facility. <br><br><br>
+                transport improvement scenario affects accessibility from/to a certain area/facility.
+            </p><br>
+
+            <div class="year-heading" id="jun24lit">June 24, 2026</div>
+            <p class="description">
+                <h5 id="reading8">Evaluating the impact of public transport travel time inaccuracy and variability on socio-spatial inequalities in accessibility (<a href="https://doi.org/10.1016/j.jtrangeo.2023.103590">Link</a>)</h5>
+                <strong><u>What Is It About</u></strong>: It is a paper that looks at how 'accessibility' of various socioeconomic groups in Fortaleza, Brazil, differs 
+                because of 'travel time inaccuracy' - which they defined as the 'actual vs scheduled' deviation - and 'travel time variability' - which they defined as 
+                the deviation of service delivery across the day (peak vs off-peak). The accessibility metric used is the cumulative opportunities metric to jobs - how 
+                many jobs can one reach from an origin within a threshold time of 1 hour. Unlike <a href="#reading3">this reading</a> which generated retrospective GTFS 
+                data by trip-level, this paper does it by segment-level where they created a normal distribution of travel times between any two consecutive stops of 
+                any route. So they were able to create two retrospective-ish GTFS data based on median time and the 85th percentile, and then run their accessibility 
+                measures thereafter. <br><br>
+
+                <strong><u>My Takeaways</u></strong>: Their method of generating retrospective GTFS is going to be different from the method that I will use. However, 
+                the core purpose of investigating <strong>travel time inaccuracy</strong> remains, so I have justification that there are grounds for looking at travel 
+                time inaccuracy in Manchester, Nottingham and Bristol because their paper, looking at Fortaleza, revealed that range of TTI (how far off actual service 
+                is from scheduled, be they earlier or later) is greater in lower socioeconomic areas of the city. This paper is also useful for me as a reference point 
+                on how to visualise my own outputs for my dissertation later! <br><br><br>
+
+
+                <h5 id="reading9">Accounting for uncertainty and variation in accessibility metrics for public transport sketch planning (<a href="https://doi.org/10.5198/jtlu.2018.1074">Link</a>)</h5>
+                <strong><u>What Is It About</u></strong>: It is a paper that describes how they calculate accessibility impacts of new public transport interventions 
+                when faced with two main problems. First problem is that one's journey time is dependent on when they started their journey, down to the minute. My 
+                travel to work could be as low as 10 minutes if I arrive at the stop and the bus is already there. It could also be as high as 15 minutes because when I 
+                arrive, the bus could have just departed and I need to wait for the next one, and this bus comes in 5-min frequencies. They decided to base it on median 
+                journey time from every minute within the departure time window. The second problem is on generating hypothetical GTFS schedules if all you know about 
+                this new bus route or new metro line is that the service will come every 5 minutes. This has implications if a transfer is needed during the journey and 
+                once again you run back into the first problem. They decided to do Monte Carlo sampling to generate different permutations of the hypothetical schedules 
+                and then get the median values! <br><br>
+
+                <strong><u>My Takeaways</u></strong>: I thought that this article is not that useful because their focus on 'uncertainty' and 'variation' is not the 
+                same as TTU and TTV from <a href="#reading3">this reading</a>. That Monte Carlo sampling is even less relevant because in my scenario of increasing 
+                bus frequency, I intend for now to just double the selected services by having one more trip to start in between two existing trips, with travel times 
+                based on the earlier trip (essentially if infrequent Service A has Trip 1 that starts at 0800 and Trip 2 at 0830, I intend to duplicate Trip 1 in its 
+                entirety, but making this duplicated trip start at 0815). Meanwhile, the decision to use median travel time at first sounded like a 'duh' because that 
+                is what I will get through the r5py travel time modelling. It was here when I realised that two of this paper's co-authors are from Conveyal, the 
+                company who developed R5 engine, on which r5py package is based on. So this paper becomes a methodological reference, but it may not make the cut on 
+                the final bibliography/reference list because I may choose to just cite the r5py package instead. <br><br><br>
+
+
+                <h5 id="reading10">Metro 3 in Brussels under uncertainty: Scenario-based public transport accessibility analysis (<a href="https://arxiv.org/html/2509.22223">Link</a>)</h5>
+                <strong><u>What Is It About</u></strong>: It is a paper that uses r5py to model how travel time changed from baseline to two scenarios: a full and a 
+                partial implementation of a hotly-debated metro line in Brussels. They did not use any specific accessibility metric (cumulative or potential 
+                accessibility), but rather just focused on travel times and compare it between origin areas of different socioeconomic levels respectively. <br><br>
+
+                <strong><u>My Takeaways</u></strong>: I can use this as one of the parallel research justification of analysing improvement scenarios by editing GTFS 
+                schedules directly - either scheduled or retrospective. They also brought in the idea of 'ergodicity breaking' into discussion about travel times, 
+                which is basically the fact that the experience of one person may not be the same as the collective -- essentially MTUP that is quoted by 
+                <a href="#reading4">this reading</a>, so I guess I also have more reason to bring in the MTUP concept in my discussion. Additionally, since they just 
+                focused on changing travel times, they also provide distributional diagnostic statistics on how travel times across change from baseline to the scenarios,
+                referring to a method that they brought in from <a href="http://dx.doi.org/10.1080/02664763.2012.724665">Wilcox & Erceg-Hurn, 2012</a>. This could be a 
+                useful addition to how I report the change between scenarios for my dissertation, but it does increase complexity as well... <br><br><br>
             </p>
 
             <p class="description">
@@ -233,7 +313,6 @@
                 <li><a href="https://doi.org/10.1061/(ASCE)TE.1943-5436.0000312">Bus-arrival-time prediction models: Link-based and section-based</a></li>
                 <li><a href="https://doi.org/10.1061/(ASCE)0733-947X(2004)130:1(56)">Modelling transit trip time using archived bus dispatch system data</a></li>
                 <li><a href="https://doi.org/10.1016/j.tra.2015.02.002">Modeling the commute mode share of transit using continuous accessibility of jobs</a></li>
-                <li><a href="https://doi.org/10.1016/j.jtrangeo.2023.103590">Evaluating the impact of public transport travel time inaccuracy and variability on socio-spatial inequalities in accessibility</a></li>
                 <li><a href="http://dx.doi.org/10.1016/j.apgeog.2014.06.012">Temporal variability in transit-based accessibility to supermarkets</a></li>
                 <li><a href="https://doi.org/10.1016/j.jtrangeo.2003.10.005">Acessibility evaluation of land-use and transport strategies: Review and research directions</a></li>
                 <li><a href="https://doi.org/10.1016/j.jtrangeo.2020.102919">Public transport accessibility accounting for level of service and competition for urban opportunities: An equity analysis for education in Santiago de Chile</a></li>
@@ -242,10 +321,6 @@
                 <li><a href="https://doi.org/10.1002/atr.134">Analyzing transit service reliability using detailed data from automatic vehicular locator systems</a></li>
                 <li><a href="https://doi.org/10.1016/j.tra.2011.11.013">Understanding the impacts of a combination of service improvement strategies on bus running time and passenger's perception</a></li>
                 <li><a href="https://doi.org/10.1016/j.trpro.2024.12.166">Using GTFS-data to calculate the roadwork caused delays on public transport network</a></li>
-                <li><a href="https://doi.org/10.1038/s41598-024-74960-x">Signals, tracks, and trams: Public transport signal priority impact on job accessibility over time</a></li>
-                <li><a href="https://doi.org/10.1177/03611981211009226">Using GTFS to calculate travel time savings potential of bus preferential treatments</a></li>
-                <li><a href="https://arxiv.org/html/2509.22223">Metro 3 in Brussels under undertainty: Scenario-based public transport accessibility analysis</a></li>
-                <li><a href="https://doi.org/10.5198/jtlu.2018.1074">Accounting for uncertainty and variation in accessibility metrics fro public transport sketch planning</a></li><br><br>
             </ul>
         </div>
 
