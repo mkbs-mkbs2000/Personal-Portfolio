@@ -52,7 +52,7 @@
                 to convert it into a retrospective GTFS format so that I can plug it into r5py to do accessibility analysis based on actual bus journeys instead of 
                 timetabled schedules (GTFS-RT is not the same as GTFS! Read more <a target="_blank" href="https://open-innovations.org/blog/2024-12-23-gtfs-and-gtfs-rt-for-beginners">here</a>). 
                 Even that has already been done by Open Innovations, where they have shared their Python script via 
-                <a target="_blank" href="https://github.com/open-innovations/bus-tracking">a separate public GitHub repository</a>! <br><br><br>
+                <a target="_blank" href="https://github.com/open-innovations/bus-tracking">a separate public GitHub repository</a>! <br><br>
 
                 <h5>Get the Relevant Morning Peak Hour GTFS-RT Data</h5>
                 Firstly, I downloaded the GTFS-RT data for one specific day (September 17, 2025) from the Open Innovations' archive. The choice for this day is because 
@@ -60,7 +60,7 @@
                 a Wednesday). Apparently, GTFS-RT was scraped from BODS into the archive every 30 seconds, with the timestamps recorded in UTC as part of the zipped 
                 folder name. So, to isolate the realtime data for the morning peak hour (so as to be as close to the CfC report as possible), I extracted zipped folders 
                 with timestamps from 0600 -> 0830 UTC, which corresponds to 0700 -> 0930 in BST (UK only leaves Summer Time in October), into a new separate folder 
-                (let's call this folder gtfsrt_morning_17Sept). <br><br><br>
+                (let's call this folder gtfsrt_morning_17Sept). <br><br>
 
                 <h5>Inspect the GTFS-RT Data</h5>
                 Then, I adapted a Python script from the above hyperlinked GitHub repo, found in 'one_off_scripts' -> 'extract.py', to extract the BIN files in the 
@@ -69,22 +69,102 @@
                 wise to see how the GTFS-RT data looks like in a CSV file as a pre-processing step using script from 'pipelines' -> 'gtfsrt_to_csv.ipynb' with 
                 adaptations to match my local file structure. It was through inspection via CSV format that I discovered a small issue - BODS's GTFS-RT did not really 
                 capture 'current_stop_sequence' and 'current_status' information of the buses. These two information are crucial for the conversion of GTFS-RT data into 
-                retrospective GTFS data via 'pipelines' -> 'gtfsrt2gtfs_interpolation.ipynb'. <br><br><br>
+                retrospective GTFS data via 'pipelines' -> 'gtfsrt2gtfs_interpolation.ipynb'. <br><br>
 
                 <h5>Convert GTFS-RT to Retrospective GTFS Data</h5>
                 Fortunately, the repo also contains `demo.ipynb` within the 'pipelines', which contains the "older method for matching buses to the timetable using 
                 distance and bearing between stops and buses". This was what I adapted to convert GTFS-RT into retrospective GTFS data that I can then feed into r5py! 
                 As the project progresses over the months, I will make my own GitHub public repo where I share the adapted scripts as well as highlight the Python 
-                packages and related utils needed to run them. As of now, all these steps that I did was to extract live location data for buses in Greater Manchester. <br><br><br>
+                packages and related utils needed to run them. As of now, all these steps that I did was to extract live location data for buses in Greater Manchester. <br><br>
 
                 <h5>Caution Note</h5>
                 It is important to note that during the conversion of GTFS-RT into GTFS, it will create a 'feed_info.txt' file. This file contains information about when 
-                the GTFS schedule - retrospective or future - starts and ends, which is a requirement for a valid GTFS data to be run by r5py package. The way in which 'demo.ipynb' develops this 
-                file is to rely on scheduled GTFS data archived from BODS - and BODS defaults the end date of the schedule to a year beyond 2100. While this is not a problem for the validity 
-                of the GTFS per se, <strong>it is a problem specifically for r5py</strong>. Thus, before eventually plugging the GTFS data - either retrospective or scheduled - into r5py, 
-                <strong>one has to change the 'feed_end_date' to a year before 2100 first!</strong>
+                the GTFS schedule - retrospective or future - starts and ends, which is a requirement for a valid GTFS data to be run by r5py package. The way in which 
+                'demo.ipynb' develops this file is to rely on scheduled GTFS data archived from BODS - and BODS defaults the end date of the schedule to a year beyond 
+                2100. While this is not a problem for the validity of the GTFS per se, <strong>it is a problem specifically for r5py</strong>. Thus, before eventually 
+                plugging the GTFS data - either retrospective or scheduled - into r5py, <strong>one has to change the 'feed_end_date' to a year before 2100 first!</strong>
+            </p><br>
+
+            <div class="year-heading" id="jun25rt2gtfs">June 25, 2026</div>
+            <p class="description">
+                From my literature review, I learnt about <a href="../literature.html#reading3" target="_blank">an alternative Python package called <i>rt2gtfs</i></a> 
+                that built upon Open Innovations' code to convert live location data from BODS into a retrospective GTFS that I can plug into r5py. Here's how I 
+                understand the difference between Open Innovations (former code) and <i>rt2gtfs</i> (latter code) methods of generating retrospective GTFS...
             </p>
 
+            <ol>
+                <li>
+                    The former code can allow for direct conversion of live location data into retrospective GTFS. The latter code requires live location data to be 
+                    transformed into a CSV file before building that retrospective GTFS.
+                </li><br>
+                <li>
+                    Both sets of code tries to match trip_id from live location data with trip_id from scheduled GTFS data. But the latter allows for lookups not just 
+                    from that specific day's scheduled data but also from several other days before and after (up to seven) because sometimes transit agencies themselves 
+                    may not update the scheduled GTFS data in a timely manner. Using the former code, if the live location data could not be matched with that day's 
+                    scheduled data, that trip will be dropped from the retrospective GTFS, even if that service did run. In that sense, the latter code is more accurate!
+                </li><br>
+                <li>
+                    The former code looks at the nearest stop from each bus that's on the road -- the <strong>first</strong> instance when a bus is nearer to one stop 
+                    than any other stops will be the arrival time for that bus at that stop. (In a sense, the focus of the former code is on the bus!) Meanwhile, the 
+                    latter code looks at the trip_id from live location data and use it to filter for stops along that specific route -- the instance when a bus is at 
+                    its <strong>nearest</strong> position to a stop on its 'supposed' route will be the arrival time for the bus at that stop. (In that sense, the focus 
+                    of the latter code is on the stops!) That means that the latter code can be seen as more accurate if you care about when does a bus ACTUALLY arrive 
+                    at a stop.
+                </li><br>
+                <li>
+                    Live location data relies on the GPS device on each bus working correctly. Sometimes, it won't, and the bus location could not be detected for quite 
+                    some time until when it reappears, it turns out that the bus has moved from the third stop to the seventh stop on the route. The former code would 
+                    record this at it is (the bus skipped stops 4-6) and won't have an arrival time for it. The latter code tackles this problem by interpolating the 
+                    arrival times at stops 4, 5 and 6 based on the time recorded for stops 3 and 7. In that sense, both codes are bad -- the former code left out data 
+                    while the latter code 'makes up' the data (although this is actually a problem about the GPS technology itself instead of a problem with the codes, 
+                    but that's for another time...)
+                </li><br>
+                <li>
+                    The latter code is accompanied with a technical paper that explains in detail the trip-level matching principles underlying it, and can be invoked 
+                    using functions similar to functions in other Python packages like geopandas, which makes my own code neater. In contrast, the former code did not 
+                    have a similarly-detailed technical paper -- they just documented why they wanted to convert live location data into retrospective GTFS and then put 
+                    up the entire script on GitHub.
+                </li><br>
+                <li>
+                    Pertaining to time boundaries, the latter code allows one to set the time period that they are interested in -- so one could have a retrospective 
+                    GTFS data of morning/evening peak hour services only. This cannot be done directly using the former code -- one has to pre-process the live location 
+                    data based on timestamps first before passing it into the code.
+                </li><br>
+                <li>
+                    Pertaining to geographic boundaries, neither code has the ability to generate a retrospective GTFS data specific to a region directly. This can only 
+                    be done by pre-filtering the live location data based on where the buses are at, or pre-filtering the scheduled GTFS data so that matched trips are 
+                    only the ones that are within the target area.
+                </li><br>
+                <li>
+                    The latter code also generates diagnostic results that can allow me to evaluate the quality of the retrospective GTFS data. The former code does not 
+                    have this functionality in-built.
+                </li>
+            </ol><br>
+
+            <p class="description">
+                Therefore, I am inclined to use the latter code - <i>rt2gtfs</i> - for my dissertation. Here's what is going to happen with my code!
+            </p>
+
+            <div class="work-card">
+                <div class="title">Preparing Scheduled GTFS Datasets</div>
+                <ol>
+                    <li>For each study area, get the region's scheduled GTFS data on the target date PLUS the data for four weekdays before and after the target date from the archive, totaling to nine scheduled GTFS datasets per study area</li>
+                    <li>For each of the nine scheduled GTFS datasets, scope it to routes where the first and last stop is WITHIN the study area boundaries</li>
+                    <li>The nine scoped scheduled GTFS datasets should be in one folder</li>
+                </ol>
+
+                <div class="title">Preparing Live Location Data (GTFS-RT)</div>
+                <ol>
+                    <li>Get the GTFS-RT data for the target date from the archive</li>
+                    <li>Unzip all the timestamped binary files and store them into another folder</li>
+                </ol>
+
+                <div class="title">Generating Retrospective GTFS Data</div>
+                <ol>
+                    <li>Convert the unzipped binary files of live location data into a CSV file</li>
+                    <li>Use that CSV file plus the nine scoped scheduled GTFS datasets to generate the retrospective GTFS data, which will be stored in a third folder</li>
+                </ol>
+            </div>
         </div>
 
         <script src="../../script.js"></script>

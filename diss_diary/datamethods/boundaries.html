@@ -49,16 +49,16 @@
                 Since I have been flip-flopping on which administrative boundaries that I will be using for my dissertation, I think it is about time that I should 
                 clarify what is going on, now that <a target="_blank" href="odmatrix.html#june4iwaswrong">I have firmed up on the choice of OD data</a>. <br><br>
 
-                <h5>Lowest-Level Administrative Geography</h5>
+                <h5>Spatial Unit of Analysis</h5>
                 Since the Locomizer dataset provides Origin-Destination pair flows at the 2021 MSOA level, I will be using <strong>2021 MSOA boundaries</strong> for 
                 the base unit of my analysis. This means that when looking at how the commuting patterns will change due to service improvements, it will be based on 
                 changes at 2021 MSOA level. <br><br>
 
                 <h5>City Centre Boundaries</h5>
                 Currently, CfC defined their city centre boundaries based on 
-                <a target="_blank" href="https://www.centreforcities.org/reader/checking-out/">another report published by CfC in 2025</a> which looked at high streets' 
-                economic performance across the UK. Essentially, they used a 
-                <a target="_blank" href="https://data.geods.ac.uk/dataset/retail-centre-boundaries">dataset of retail centre boundaries from Geographic Data Service (GoeDS)</a> 
+                <a target="_blank" href="https://www.centreforcities.org/reader/checking-out/">another report that they have published in 2025</a> which looked at high 
+                streets' economic performance across the UK. Essentially, they used a 
+                <a target="_blank" href="https://data.geods.ac.uk/dataset/retail-centre-boundaries">dataset of retail centre boundaries from Geographic Data Service (GeoDS)</a> 
                 (because city centres are also retail centres) and overlaid it onto <a target="_blank" href="https://apps.cdrc.ac.uk/static/COWZ.pdf">Workplace Zones (WZ)</a>. 
                 They then relied on their 'in-house knowledge of these city centres' to determine which other WZs should be grouped together into the central 
                 business district (and therefore the city centre) for the primary urban area. This is because GeoDS dataset only looks at retail centres, but CBDs also 
@@ -67,7 +67,7 @@
                 Herein lies the problem - the CfC's city centre boundaries, as I got them, do not match MSOA boundaries. Looking at 
                 <a target="_blank" href="../results/access_results.html#june2results">Manchester's city centre boundaries alone</a>, they span across four MSOAs. For 
                 the first part of my dissertation that looks at scheduled-vs-actual accessibility, this would not be a problem. It is problematic for the second part 
-                that uses SIM to predict changes in commuting patterns because my OD data is set to MSOA level. <br><br>
+                that uses SIM to predict changes in commuting patterns because my OD data is set to MSOA level, so how do I count 'flows going to city centre'? <br><br>
 
                 So this is how I intend to resolve it. Firstly, I need to <strong>adjust CfC's city centre boundaries into the 2021 LSOA boundaries</strong>. 
                 The impact is that the city centre boundaries are going to get slightly bigger. This will facilitate the usage of the latest data from
@@ -104,10 +104,9 @@
                 Nottingham and Bristol does not have the same local government structures as Greater Manchester. As a Singaporean, I don't understand how the local 
                 government system works, and I don't intend to. Fortunately, ONS has also published 
                 <a target="_blank" href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/articles/traveltoworkareaanalysisingreatbritain/2016">Travel to Work Areas (TTWAs)</a>, 
-                a geography that approximates labour market areas - essentially people largely live and work within these boundaries, which may not be the same as the 
-                local government boundaries that are <a target="_blank" href="https://en.wikipedia.org/wiki/Upcoming_structural_changes_to_local_government_in_England">about to change a lot more in the next few years</a>, 
-                if a Labour government can remain by 2029. Therefore, in a similar idea as the city centre boundary adjustments above, 
-                <strong>I adjusted TTWA boundaries into 2021 MSOA boundaries, as follows</strong>.
+                a geography that approximates labour market areas - essentially people largely live and work within these boundaries, which is not the same as the local 
+                government boundaries. Therefore, in a similar idea as the city centre boundary adjustments above, 
+                <strong>I adjusted TTWA boundaries by extending it into 2021 MSOA boundaries that the TTWA intersects with</strong>. The outcome is as follows.
             </p>
 
             <div class="col-md-8 mx-auto text-center">
@@ -130,7 +129,14 @@
                         <img src="bristol_area.png" alt="Bristol Study Area" class="img-fluid rounded">
                     </div>
                 </div>
-            </div>
+            </div><br>
+
+            <p class="description">
+                <h5>Origins and Destination for r5py Travel Time Modelling</h5>
+                This is elaborated further in <a href="accessibility.html">this page</a>, but basically even though the spatial unit of analysis is set to the larger MSOA 
+                boundaries, I set the origin and destination points as the population centroids at the LSOA level. Origins shall be the LSOA population centroids of all 
+                the MSOAs that make up the new study area boundaries. Destinations shall be the LSOA population centroids of the new city centre boundaries.
+            </p>
         </div>
 
 
