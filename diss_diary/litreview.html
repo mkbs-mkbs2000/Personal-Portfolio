@@ -47,19 +47,72 @@
             <p class="description">
                 <h5>2.1: Definition of Travel Time Inaccuracy (TTI)</h5>
                 Travel time inaccuracy (TTI) in this paper strictly refers to how “scheduled levels of service might differ from what is delivered to the population” 
-                (<a target="_blank" href="https://doi.org/10.1016/j.jtrangeo.2023.103590">Braga et al., 2023</a>). This should not be confused with another term that is 
-                more common in literature -- Travel Time Variability (TTV). <br><br>
+                (<a target="_blank" href="https://doi.org/10.1016/j.jtrangeo.2023.103590">Braga et al., 2023</a>). That means that actual service may be worse than 
+                scheduled but it can also be better. Travel time variability (TTV), on the other hand, looks at the variability of travel times between an origin and a 
+                destination. This variability could manifest between two modes of transport that start their journey at the same time, or between different times of the 
+                day, or over different days (<a target="_blank" href="https://doi.org/10.1080/0144164001002245">Noland & Polak, 2002</a>; 
+                <a target="_blank" href="https://doi.org/10.1061/(ASCE)TE.1943-5436.0000126">Mazloumi et al., 2009</a>). <br><br> 
                 
-                TTV, on the other hand, is strictly concerned with the inconsistency of travel times between an origin and a destination. This inconsistency could 
-                manifest between two modes of transport that start their journey at the same time, or between different times of the day, or over different days 
-                (<a target="_blank" href="https://doi.org/10.1080/0144164001002245">Noland & Polak, 2002</a>; 
-                <a target="_blank" href="https://doi.org/10.1061/(ASCE)TE.1943-5436.0000126">Mazloumi et al., 2009</a>). While the causes of TTV and TTI may be the same, 
-                <a target="_blank" href="https://arxiv.org/html/2603.11477v2">Chen and Botta (2026)</a> are clear that TTV and TTI itself are ultimately separate issues. 
-                This is because a service that consistently runs five minutes late every day during the morning peak hours is a representation of TTI, not TTV. 
-                Meanwhile, a punctual service that has different frequencies between morning peak hours and off-peak hours would result in TTV but not TTI. <br><br>
+                While the causes of TTV and TTI may be the same, and TTI could induce TTV, 
+                <a target="_blank" href="https://arxiv.org/html/2603.11477v2">Chen and Botta (2026)</a> are clear that both terms by itself are ultimately separate 
+                issues. This is because a service that consistently runs five minutes late every day is a representation of TTI, not TTV. Meanwhile, a punctual service 
+                that has different frequencies between morning peak hours and off-peak hours does not have TTI but produces TTV. <br><br>
+                
+                As will be expounded later in Section 4, this paper will look at how service delivery deviates from the schedule across four Wednesdays in June 2026. 
+                Thus, it will look at both TTI and TTV. <br><br><br>
 
-                <h5>2.2: Use of Real-Time Data in Accessibility Studies</h5>
-                Lorem ipsum, will be updated soon! <br><br>
+
+                <h5 id="section2_2">2.2: Use of Real-Time Data in Accessibility Studies</h5>
+                <i>Google Transit Feed Specification</i>, later <i>General Transit Feed Specification</i> (GTFS), is a static dataset comprising of at least seven 
+                relational text files that transport agencies or operators use to share information about their scheduled services, such as which routes do they operate 
+                (found in <i>routes.txt</i>), which specific times would they run the routes (found in <i>trips.txt</i>) and at what specific times would the buses call 
+                at the specific stops along the routes that they are servicing (found in <i>stop_times.txt</i>) 
+                (<a target="_blank" href="https://gtfs.org/documentation/schedule/reference/">GTFS, n.d.</a>). There is also a real-time extension called 
+                <i>GTFS-RealTime</i> (GTFS-RT). Unlike its static counterpart, GTFS-RT data is provided in binary files that needs prior decoding using Google's Protocol 
+                Buffers and provides the buses' live locations and the trips that they are serving 
+                (<a target="_blank" href="https://gtfs.org/documentation/realtime/reference/">GTFS, n.d.</a>). Some GTFS-RT feeds would also provide information about 
+                the next stops to which these buses are heading and the estimated arrival times, but the feeds provided by UK public transport operators are known to 
+                have left this out 
+                (<a target="_blank" href="https://boduf.discourse.group/t/gtfs-rt-current-status-2-and-current-stop-sequence-0/170">BODS User Forum, 2025</a>; 
+                <a target="_blank" href="https://doi.org/10.3390/ijgi14070243">Webb et al., 2025</a>). This means that static GTFS data is favoured over the dynamic 
+                GTFS-RT data in academic circles because it is easier to access <i>(pun intended)</i> and interpret the former, which is also more complete. <br><br>
+
+                The path dependency of preferring GTFS data to GTFS-RT is further cemented by the advent of <i>R5</i>, a Java-based routing model, and its wrappers in 
+                <i>R</i> and <i>Python</i> languages (<i>r5r</i> and <i>r5py</i> respectively), which requires public transport input to be in the format of the former 
+                dataset. <i>R5</i>'s appeal lies in its ability to produce travel time estimates for multiple origins and destinations quickly 
+                (<a target="_blank" href="https://doi.org/10.3141/2653-06">Conway et al., 2017</a>), meaning that it is a useful tool for transportation researchers to 
+                measure accessibility. It has been applied for various contexts around the world such as Brussels, Santiago and Mexico City, to name a few 
+                (<a target="_blank" href="https://arxiv.org/html/2509.22223">Verbeken et al., 2025</a>; 
+                <a target="_blank" href="https://doi.org/10.1111/gean.70039">Marin-Flores et al., 2026</a>; 
+                <a target="_blank" href="https://doi.org/10.1007/s10109-026-00490-x">Verduzco-Torres & McArthur, 2026</a>). In the UK, it has been used to generate 
+                nationwide accessibility indicator datasets (<a target="_blank" href="https://doi.org/10.1038/s41597-023-02890-w">Verduzco-Torres & McArthur, 2024</a>), 
+                evaluating transport infrastructure investments (<a target="_blank" href="https://doi.org/10.1016/j.cstp.2026.101768">Lee & van Dijk, 2026</a>) and 
+                exploring healthcare accessibility inequality (<a target="_blank" href="https://doi.org/10.1088/2632-072X/ade587">Chen & Botta, 2025</a>). <br><br>
+
+                However, static GTFS data does not reflect the dynamic nature of public transport operations. In reality, delays could arise at any part of the route due 
+                to multiple reasons such as long boarding times, stopping at successive traffic signals, or short distances between successive stops 
+                (<a target="_blank" href="https://doi.org/10.1002/atr.134">El-Geneidy et al., 2011</a>; 
+                <a target="_blank" href="https://doi.org/10.1080/13658816.2019.1608997">Yongha et al., 2020</a>; 
+                <a target="_blank" href="https://doi.org/10.1016/j.rineng.2021.100280">Kaewunruen et al., 2021</a>). These delays may cascade down the route, knocking 
+                services off their schedules and cause TTI and/or TTV. Meanwhile, static data may also incorporate schedule padding, where extra time is added to 
+                accommodate for potential delays such as the ones mentioned earlier 
+                (<a target="_blank" href="https://doi.org/10.5198/jtlu.2019.1502">Wessel & Farber, 2019</a>). That means that findings from accessibility studies based 
+                on static GTFS data alone are inaccurate because they could either be overestimations or underestimations. It was 
+                <a target="_blank" href="http://dx.doi.org/10.1016/j.jtrangeo.2017.04.012">Wessel et al (2017)</a> who first developed a method to convert GTFS-RT data 
+                into retrospective GTFS datasets and then demonstrated its utility in exploring how TTI impacted cumulative accessibility to jobs. This paved the way for 
+                other researchers to apply and adapt their methods to measure TTI/TTV-impacted accessibility in different contexts 
+                (Braga et al., 2023; <a target="_blank" href="https://doi.org/10.1016/j.tbs.2025.101054">Javanmard et al., 2025</a>). <br><br>
+
+                In the UK, the viability of real-time data utilisation in accessibility research increased after the introduction of the 
+                <a target="_blank" href="https://www.gov.uk/guidance/find-and-use-bus-open-data">Bus Open Data Service (BODS)</a> in 2021, which mandated all bus 
+                operators, among other things, to share their live location data. However, research using real-time data has been limited because there was no stable 
+                archive of BODS GTFS-RT feeds until 2025 (<a target="_blank" href="https://data.datalibrary.uk/transport/BODS-ARCHIVE/">Open Innovations, 2025</a>). 
+                Nevertheless, there is a growing interest to utilise real-time data for accessibility research in the UK, evidenced by the recognition of how TTI could 
+                be one of the reasons behind UK cities' lagging productivity vis-à-vis their similarly sized European counterparts 
+                (<a target="_blank" href="https://open-innovations.org/blog/2024-10-29-transport-accessibility-in-2024-part-1">Strange, 2024</a>), and the development of 
+                code to convert BODS GTFS-RT feeds into retrospective GTFS dataset along the lines of Wessel et al 
+                (<a target="_blank" href="https://github.com/open-innovations/bus-tracking">Open Innovations, 2024</a>; Chen & Botta, 2026). <br><br><br>
+
 
                 <h5>2.3: Accessibility Metrics in Transport Appraisal</h5>
                 Lorem ipsum, will be updated soon!
